@@ -18,7 +18,7 @@ jQuery( document ).ready( function( $ ) {
 		str: [ 'updated', 'error' ],
 		pushMsg: function( msg, className ) {
 			const div = $( '<div><p></p></div>' );
-			div.addClass( className ).find( 'p' ).text( msg.replace( /\+/g, ' ' ) );
+			div.addClass( className ).find( 'p' ).html( msg.replace( /\+/g, ' ' ) );
 			this.divs.push( div );
 		},
 		grabMessage: function() {

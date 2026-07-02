@@ -19,7 +19,16 @@ trait MessageHelper {
 	 */
 	protected function add_message( $text, $error = false ) {
 		$key  = 'gianism_' . ( $error ? 'error' : 'updated' );
-		$text = wp_strip_all_tags( $text );
+		$text = wp_kses(
+			$text,
+			array(
+				'a' => array(
+					'href'   => true,
+					'target' => true,
+					'rel'    => true,
+				),
+			)
+		);
 		if ( isset( $_COOKIE[ $key ] ) && ! empty( $_COOKIE[ $key ] ) ) {
 			$messages   = json_decode( stripcslashes( $_COOKIE[ $key ] ), true );
 			$messages[] = $text;
