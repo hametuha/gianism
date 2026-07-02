@@ -484,7 +484,7 @@ class Facebook extends NoMailService {
 	 */
 	public function update_facebook_admin() {
 		if ( current_user_can( 'manage_options' ) && 'gianism' === $this->input->get( 'page' ) && wp_verify_nonce( $this->input->post( '_wpnonce' ), 'gianism_fb_account' ) ) {
-			update_option( 'gianism_facebook_admin_id', $this->input->post( 'fb_account_id' ) );
+			update_option( 'gianism_facebook_admin_id', sanitize_text_field( $this->input->post( 'fb_account_id' ) ) );
 			$this->add_message( $this->_( 'Saved facebook account to use.' ) );
 			wp_redirect( admin_url( 'options-general.php?page=gianism&view=fb-api' ) );
 			exit;
