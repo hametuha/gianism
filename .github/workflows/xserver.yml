@@ -1,4 +1,4 @@
-name: Release Drafter
+name: Deploy Staging
 
 on:
   push:
@@ -31,7 +31,7 @@ jobs:
           node-version: '22'
 
       - name: Build Plugin
-        run: bash bin/build.sh refs/tags/v${{ github.sha }}
+        run: bash bin/build.sh ${{ github.sha }}
 
       - name: Deploy with Rsync
         uses: Pendect/action-rsyncer@v1.1.0
