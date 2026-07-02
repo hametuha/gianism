@@ -40,8 +40,8 @@ jobs:
           generate-zip: true
         env:
           SLUG: gianism
-          SVN_USERNAME: ${{ secrets.WPORG_FUMIKI_USERNAME }}
-          SVN_PASSWORD: ${{ secrets.WPORG_FUMIKI_PASSWORD }}
+          SVN_USERNAME: ${{ secrets.WP_ORG_USERNAME }}
+          SVN_PASSWORD: ${{ secrets.WP_ORG_PASSWORD }}
 
       - name: Upload release asset
         uses: softprops/action-gh-release@v2
