@@ -186,11 +186,11 @@ class Google extends AbstractService {
 						if ( $plus_id ) {
 							update_user_meta( $user_id, $this->umeta_plus, $plus_id );
 						}
-						update_user_meta( $user_id, 'nickname', $profile['name'] );
+						update_user_meta( $user_id, 'nickname', sanitize_text_field( $profile['name'] ) );
 						$this->db->update(
 							$this->db->users,
 							array(
-								'display_name' => $profile['name'],
+								'display_name' => sanitize_text_field( $profile['name'] ),
 							),
 							array(
 								'ID' => $user_id,

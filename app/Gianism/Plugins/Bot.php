@@ -143,6 +143,9 @@ class Bot extends PluginBase {
 		// Save data
 		if ( $this->input->post( 'gianism_bot_schedule' ) && is_array( $this->input->post( 'gianism_bot_schedule' ) ) ) {
 			foreach ( $this->input->post( 'gianism_bot_schedule' ) as $time => $dates ) {
+				if ( ! preg_match( '/^\d{2}:\d{2}(:\d{2})?$/', (string) $time ) ) {
+					continue;
+				}
 				foreach ( $dates as $date ) {
 					add_post_meta( $post->ID, $this->time_key . '_' . $date, $time );
 				}
