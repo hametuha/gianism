@@ -9,7 +9,6 @@ assets/*
 doc/
 readme.txt
 language/wp-gianism.mo
-composer.lock
 .claude/settings.local.json
 tmp/
 wp-dependencies.json
