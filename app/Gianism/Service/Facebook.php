@@ -310,7 +310,7 @@ class Facebook extends NoMailService {
 						$wpdb->update(
 							$wpdb->users,
 							[
-								'display_name' => $user['name'],
+								'display_name' => sanitize_text_field( $user['name'] ),
 								// 'user_url'     => $user['link'], // Deprecated because of REST API 3 udpdate: https://developers.facebook.com/blog/post/2018/05/01/enhanced-developer-app-review-and-graph-api-3.0-now-live/
 							],
 							[
@@ -322,9 +322,9 @@ class Facebook extends NoMailService {
 						foreach ( [
 							$this->umeta_id   => $user['id'],
 							$this->umeta_mail => $email,
-							'nickname'        => $user['name'],
-							'first_name'      => $user['first_name'],
-							'last_name'       => $user['last_name'],
+							'nickname'        => sanitize_text_field( $user['name'] ),
+							'first_name'      => sanitize_text_field( $user['first_name'] ),
+							'last_name'       => sanitize_text_field( $user['last_name'] ),
 						] as $key => $value ) {
 							update_user_meta( $user_id, $key, $value );
 						}
@@ -483,8 +483,8 @@ class Facebook extends NoMailService {
 	 * Update admin account id.
 	 */
 	public function update_facebook_admin() {
-		if ( 'gianism' === $this->input->get( 'page' ) && wp_verify_nonce( $this->input->post( '_wpnonce' ), 'gianism_fb_account' ) ) {
-			update_option( 'gianism_facebook_admin_id', $this->input->post( 'fb_account_id' ) );
+		if ( current_user_can( 'manage_options' ) && 'gianism' === $this->input->get( 'page' ) && wp_verify_nonce( $this->input->post( '_wpnonce' ), 'gianism_fb_account' ) ) {
+			update_option( 'gianism_facebook_admin_id', sanitize_text_field( $this->input->post( 'fb_account_id' ) ) );
 			$this->add_message( $this->_( 'Saved facebook account to use.' ) );
 			wp_redirect( admin_url( 'options-general.php?page=gianism&view=fb-api' ) );
 			exit;

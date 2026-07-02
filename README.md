@@ -1,6 +1,6 @@
 # Gianism 
 
-Contributors: Takahashi_Fumiki, hametuha  
+Contributors: hametuha, Takahashi_Fumiki  
 Tags: facebook,twitter,google,social,sns  
 Tested up to: 6.9  
 Stable Tag: nightly  
@@ -64,6 +64,10 @@ Maybe yes. Translations are welcomed.
 
 Sorry for that. Please refer to our support site [gianism.info](http://wordpress.org/support/plugin/gianism) or send a pull request to [repository on Github](https://github.com/fumikito/Gianism/).
 
+### Where do I report security bugs found in this plugin?
+
+Please report security bugs found in the source code of the Gianism plugin through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/8e46559c-a928-4631-a865-3f136106dfd2). The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.
+
 ##  Screenshots 
 
 1. Buttons on Login/registration screen.
@@ -73,6 +77,10 @@ Sorry for that. Please refer to our support site [gianism.info](http://wordpress
 ##  Changelog 
 
 Here is a list of change logs.
+
+### 6.0.1
+
+* Harden output escaping and input sanitization across several code paths to reduce XSS risk.
 
 ### 6.0.0
 

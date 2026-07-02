@@ -603,7 +603,7 @@ EOS;
 				return sprintf(
 					'<a href="%2$s" rel="nofollow" class="%4$s"%5$s>%3$s%1$s</a>',
 					$text,
-					$href,
+					esc_url( $href ),
 					$icon,
 					$class_attr,
 					$atts

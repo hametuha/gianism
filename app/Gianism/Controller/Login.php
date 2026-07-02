@@ -91,7 +91,7 @@ class Login extends AbstractController {
 				$redirect_to = $redirect_query;
 			}
 		}
-		echo $before;
+		echo wp_kses_post( $before );
 		/**
 		 * gianism_before_login_form
 		 *
@@ -122,7 +122,7 @@ class Login extends AbstractController {
 		 * @param string $context     Context of this button action.
 		 */
 		do_action( 'gianism_after_login_form', $register, $context );
-		echo $after;
+		echo wp_kses_post( $after );
 	}
 
 	/**

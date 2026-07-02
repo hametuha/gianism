@@ -79,9 +79,9 @@ $twitter = \Gianism\Service\Twitter::get_instance();
 			<tbody>
 			<?php foreach ( $this->get_time_line( $post ) as $time => $dates ) : ?>
 				<tr>
-					<th><?php echo substr( $time, 0, 5 ); ?></th>
+					<th><?php echo esc_html( substr( $time, 0, 5 ) ); ?></th>
 					<?php for ( $i = 1; $i <= 7; $i++ ) : ?>
-						<td><input type="checkbox" name="gianism_bot_schedule[<?php echo $time; ?>][]"
+						<td><input type="checkbox" name="gianism_bot_schedule[<?php echo esc_attr( $time ); ?>][]"
 									value="<?php echo $i; ?>"<?php checked( in_array( (string) $i, $dates, true ) ); ?> />
 						</td>
 					<?php endfor ?>
