@@ -26,7 +26,7 @@ trait i18n {
 	 * @return string
 	 */
 	public function _( $string ) {
-		return __( $string, 'wp-gianism' );
+		return __( $string, 'gianism' );
 	}
 
 	/**
@@ -36,7 +36,7 @@ trait i18n {
 	 * @param string $string
 	 */
 	public function e( $string ) {
-		_e( $string, 'wp-gianism' );
+		_e( $string, 'gianism' );
 	}
 
 }

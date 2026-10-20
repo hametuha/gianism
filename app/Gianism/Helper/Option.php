@@ -116,11 +116,11 @@ class Option extends Singleton {
 		}
 		// Save message.
 		if ( $this->save( $this->key, $this->values ) ) {
-			$this->add_message( __( 'Option updated.', 'wp-gianism' ) );
+			$this->add_message( __( 'Option updated.', 'gianism' ) );
 			flush_rewrite_rules();
 			do_action( self::UPDATED_ACTION, $this->values );
 		} else {
-			$this->add_message( __( 'Option failed to update.', 'wp-gianism' ), true );
+			$this->add_message( __( 'Option failed to update.', 'gianism' ), true );
 		}
 	}
 
@@ -270,9 +270,9 @@ class Option extends Singleton {
 	 */
 	public function button_types() {
 		return [
-			__( 'Medium', 'wp-gianism' ),
-			__( 'Large', 'wp-gianism' ),
-			__( 'Guide Line Style', 'wp-gianism' ),
+			__( 'Medium', 'gianism' ),
+			__( 'Large', 'gianism' ),
+			__( 'Guide Line Style', 'gianism' ),
 		];
 	}
 

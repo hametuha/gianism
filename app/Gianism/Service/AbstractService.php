@@ -196,7 +196,7 @@ abstract class AbstractService extends Application {
 		}
 		if ( 'default' !== $action && ! $this->input->verify_nonce( $this->input->nonce_action( "{$this->service_name}_{$action}" ) ) ) {
 			// If not default, nonce required.
-			$this->input->wp_die( __( 'This request seems to be a wrong access. Please try again.', 'wp-gianism' ), 403 );
+			$this->input->wp_die( __( 'This request seems to be a wrong access. Please try again.', 'gianism' ), 403 );
 		}
 		if ( 'default' !== $action && method_exists( get_called_class(), $method ) ) {
 			// Method found, just call
@@ -232,17 +232,17 @@ abstract class AbstractService extends Application {
 		try {
 			// Is user logged in?
 			if ( ! is_user_logged_in() ) {
-				throw new \Exception( __( 'You must be logged in.', 'wp-gianism' ) );
+				throw new \Exception( __( 'You must be logged in.', 'gianism' ) );
 			}
 			// Is user connected already?
 			if ( $this->is_connected( get_current_user_id() ) ) {
 				// translators: %s is service name.
-				throw new \Exception( sprintf( __( 'You are already connected with %s', 'wp-gianism' ), $this->verbose_service_name ) );
+				throw new \Exception( sprintf( __( 'You are already connected with %s', 'gianism' ), $this->verbose_service_name ) );
 			}
 			// Set redirect URL
 			$url = $this->get_api_url( 'connect' );
 			if ( ! $url ) {
-				throw new \Exception( __( 'Sorry, but failed to connect with API.', 'wp-gianism' ) );
+				throw new \Exception( __( 'Sorry, but failed to connect with API.', 'gianism' ) );
 			}
 			// Write session
 			$this->session->write(
@@ -273,17 +273,17 @@ abstract class AbstractService extends Application {
 			$redirect_url = apply_filters( '', $redirect_url, $this->service_name, $wp_query );
 			// Is user logged in?
 			if ( ! is_user_logged_in() ) {
-				throw new \Exception( __( 'You must be logged in.', 'wp-gianism' ) );
+				throw new \Exception( __( 'You must be logged in.', 'gianism' ) );
 			}
 			// Has connection?
 			if ( ! $this->is_connected( get_current_user_id() ) ) {
 				// translators: %s is service name.
-				throw new \Exception( sprintf( __( 'Your account is not connected with %s', 'wp-gianism' ), $this->verbose_service_name ) );
+				throw new \Exception( sprintf( __( 'Your account is not connected with %s', 'gianism' ), $this->verbose_service_name ) );
 			}
 			// O.K.
 			$this->disconnect( get_current_user_id() );
 			// translators: %s is service name.
-			$this->add_message( sprintf( __( 'Your account is now unlinked from %s.', 'wp-gianism' ), $this->verbose_service_name ) );
+			$this->add_message( sprintf( __( 'Your account is now unlinked from %s.', 'gianism' ), $this->verbose_service_name ) );
 			// Redirect
 			wp_redirect( $this->filter_redirect( $redirect_url, 'disconnect' ) );
 			exit;
@@ -301,12 +301,12 @@ abstract class AbstractService extends Application {
 		try {
 			// Is user logged in?
 			if ( is_user_logged_in() ) {
-				throw new \Exception( __( 'You are already logged in.', 'wp-gianism' ), 403 );
+				throw new \Exception( __( 'You are already logged in.', 'gianism' ), 403 );
 			}
 			// Create URL
 			$url = $this->get_api_url( 'login' );
 			if ( ! $url ) {
-				throw new \Exception( __( 'Sorry, but failed to connect with API.', 'wp-gianism' ) );
+				throw new \Exception( __( 'Sorry, but failed to connect with API.', 'gianism' ) );
 			}
 			// Write session
 			$session = [
@@ -384,11 +384,11 @@ EOS;
 		switch ( $context ) {
 			case 'connected':
 				// translators: %s is service name.
-				return sprintf( __( 'Your account is already connected with %s account.', 'wp-gianism' ), $this->verbose_service_name );
+				return sprintf( __( 'Your account is already connected with %s account.', 'gianism' ), $this->verbose_service_name );
 				break;
 			default: // Disconnected
 				// translators: %1$s is service name, %2$s is site name.
-				return sprintf( __( 'Connecting with %1$s, you can login with %2$s via %1$s without password or email address.', 'wp-gianism' ), $this->verbose_service_name, get_bloginfo( 'name' ) );
+				return sprintf( __( 'Connecting with %1$s, you can login with %2$s via %1$s without password or email address.', 'gianism' ), $this->verbose_service_name, get_bloginfo( 'name' ) );
 				break;
 		}
 	}
@@ -597,7 +597,7 @@ EOS;
 
 		switch ( $context ) {
 			case 'woo-checkout':
-				return __( 'Log in', 'wp-gianism' );
+				return __( 'Log in', 'gianism' );
 				break;
 			default:
 				return sprintf(
@@ -622,7 +622,7 @@ EOS;
 	 */
 	protected function login_label( $register = false, $context = '' ) {
 		// translators: %s is service name.
-		return sprintf( __( 'Log in with %s', 'wp-gianism' ), $this->verbose_service_name );
+		return sprintf( __( 'Log in with %s', 'gianism' ), $this->verbose_service_name );
 	}
 
 	/**
@@ -661,7 +661,7 @@ EOS;
 		$args = [
 			'gianism-ga-category' => "gianism/{$this->service_name}",
 			'gianism-ga-action'   => 'login',
-			'gianism-ga-label'    => sprintf( __( 'Login with %s', 'wp-gianism' ), $this->verbose_service_name ),
+			'gianism-ga-label'    => sprintf( __( 'Login with %s', 'gianism' ), $this->verbose_service_name ),
 		];
 		if ( $this->need_confirmation( $context ) ) {
 			$args['gianism-confirmation'] = $this->confirmation_message( $context );
@@ -706,10 +706,10 @@ EOS;
 			'gianism-ga-category' => "gianism/{$this->service_name}",
 			'gianism-ga-action'   => 'connect',
 			// translators: %s is service name.
-			'gianism-ga-label'    => sprintf( __( 'Connect %s', 'wp-gianism' ), $this->verbose_service_name ),
+			'gianism-ga-label'    => sprintf( __( 'Connect %s', 'gianism' ), $this->verbose_service_name ),
 		);
 
-		return $this->button( __( 'Connect', 'wp-gianism' ), $url, 'link', array( 'wpg-button', 'connect' ), $args );
+		return $this->button( __( 'Connect', 'gianism' ), $url, 'link', array( 'wpg-button', 'connect' ), $args );
 	}
 
 	/**
@@ -734,12 +734,12 @@ EOS;
 			'gianism-ga-category' => "gianism/{$this->service_name}",
 			'gianism-ga-action'   => 'disconnect',
 			// translators: %s is service name.
-			'gianism-ga-label'    => sprintf( __( 'Disconnect %s', 'wp-gianism' ), $this->verbose_service_name ),
+			'gianism-ga-label'    => sprintf( __( 'Disconnect %s', 'gianism' ), $this->verbose_service_name ),
 			// translators: %s is service name.
-			'gianism-confirm'     => sprintf( __( 'You really disconnect from %s? If so, please be sure about your credential(email, password), or else you might not be able to login again.', 'wp-gianism' ), $this->verbose_service_name ),
+			'gianism-confirm'     => sprintf( __( 'You really disconnect from %s? If so, please be sure about your credential(email, password), or else you might not be able to login again.', 'gianism' ), $this->verbose_service_name ),
 		);
 
-		return $this->button( __( 'Disconnect', 'wp-gianism' ), $url, 'logout', array( 'wpg-button', 'disconnect' ), $args );
+		return $this->button( __( 'Disconnect', 'gianism' ), $url, 'logout', array( 'wpg-button', 'disconnect' ), $args );
 	}
 
 	/**
@@ -836,7 +836,7 @@ EOS;
 		if ( ! username_exists( $original_domain ) ) {
 			return $original_domain;
 		}
-		throw new \Exception( __( 'Cannot create valid user name.', 'wp-gianism' ) );
+		throw new \Exception( __( 'Cannot create valid user name.', 'gianism' ) );
 	}
 
 	/**
@@ -846,7 +846,7 @@ EOS;
 	 */
 	protected function api_error_string() {
 		// translators: %s is service name.
-		return sprintf( __( '%s API returns error.', 'wp-gianism' ), $this->verbose_service_name );
+		return sprintf( __( '%s API returns error.', 'gianism' ), $this->verbose_service_name );
 	}
 
 	/**
@@ -856,7 +856,7 @@ EOS;
 	 */
 	protected function duplicate_account_string() {
 		// translators: %s is service name.
-		return sprintf( __( 'This %s account is already connected with others.', 'wp-gianism' ), $this->verbose_service_name );
+		return sprintf( __( 'This %s account is already connected with others.', 'gianism' ), $this->verbose_service_name );
 	}
 
 	/**
@@ -866,7 +866,7 @@ EOS;
 	 */
 	protected function duplicate_email_string() {
 		// translators: %s is service name.
-		return sprintf( __( 'This email address is already registered. Please log in with that account and connect %s from your profile page.', 'wp-gianism' ), $this->verbose_service_name );
+		return sprintf( __( 'This email address is already registered. Please log in with that account and connect %s from your profile page.', 'gianism' ), $this->verbose_service_name );
 	}
 
 	/**
@@ -876,7 +876,7 @@ EOS;
 	 */
 	protected function welcome( $who ) {
 		// translators: %s is user name.
-		$this->add_message( sprintf( __( 'Welcome, %s!', 'wp-gianism' ), $who ) );
+		$this->add_message( sprintf( __( 'Welcome, %s!', 'gianism' ), $who ) );
 	}
 
 	/**
@@ -885,7 +885,7 @@ EOS;
 	 * @param string $message
 	 */
 	protected function auth_fail( $message ) {
-		$this->add_message( __( 'Sorry, but failed to Authenticate. Please try again.', 'wp-gianism' ) . ' ' . $message, true );
+		$this->add_message( __( 'Sorry, but failed to Authenticate. Please try again.', 'gianism' ) . ' ' . $message, true );
 	}
 
 	/**
@@ -894,7 +894,7 @@ EOS;
 	 * @return string
 	 */
 	protected function mail_fail_string() {
-		return __( 'Cannot retrieve email address.', 'wp-gianism' );
+		return __( 'Cannot retrieve email address.', 'gianism' );
 	}
 
 	/**
@@ -903,7 +903,7 @@ EOS;
 	 * @return string
 	 */
 	protected function registration_error_string() {
-		return __( 'Cannot register. Please try again later.', 'wp-gianism' );
+		return __( 'Cannot register. Please try again later.', 'gianism' );
 	}
 
 	/**
@@ -911,7 +911,7 @@ EOS;
 	 */
 	protected function kill_wrong_access() {
 		// translators: %1$s URL, %2$s Blog name.
-		$this->input->wp_die( sprintf( __( 'Sorry, but wrong access. Please go back to <a href="%1$s">%2$s</a>.', 'wp-gianism' ), home_url( '/' ), get_bloginfo( 'name' ) ), 500, false );
+		$this->input->wp_die( sprintf( __( 'Sorry, but wrong access. Please go back to <a href="%1$s">%2$s</a>.', 'gianism' ), home_url( '/' ), get_bloginfo( 'name' ) ), 500, false );
 	}
 
 	/**
@@ -923,7 +923,7 @@ EOS;
 	protected function test_user_can_register() {
 		if ( ! $this->user_can_register() ) {
 			// translators: %s is service name.
-			throw new \Exception( sprintf( __( 'Registration via %s is not allowed.', 'wp-gianism' ), $this->verbose_service_name ) );
+			throw new \Exception( sprintf( __( 'Registration via %s is not allowed.', 'gianism' ), $this->verbose_service_name ) );
 		}
 
 		return true;
@@ -1026,7 +1026,7 @@ EOS;
 	public function confirmation_message( $context = 'login' ) {
 		$message = sprintf(
 			// translators: %1$s blog name, %2$s is service name.
-			__( '%1$s gets your information below from %2$s. Please proceed with your agreement.', 'wp-gianism' ),
+			__( '%1$s gets your information below from %2$s. Please proceed with your agreement.', 'gianism' ),
 			get_bloginfo( 'name' ),
 			$this->verbose_service_name
 		);
@@ -1050,9 +1050,9 @@ EOS;
 	public function target_credentials( $context = 'login' ) {
 		return [
 			// translators: %s is serfice name.
-			'id'      => sprintf( __( '%s User ID', 'wp-gianism' ), $this->verbose_service_name ),
-			'profile' => __( 'Profile', 'wp-gianism' ),
-			'email'   => __( 'Email', 'wp-gianism' ),
+			'id'      => sprintf( __( '%s User ID', 'gianism' ), $this->verbose_service_name ),
+			'profile' => __( 'Profile', 'gianism' ),
+			'email'   => __( 'Email', 'gianism' ),
 		];
 	}
 

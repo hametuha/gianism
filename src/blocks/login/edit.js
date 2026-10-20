@@ -10,10 +10,10 @@ export default function Edit( { attributes, setAttributes } ) {
 	return (
 		<>
 			<InspectorControls>
-				<PanelBody title={ __( 'Settings', 'wp-gianism' ) }>
+				<PanelBody title={ __( 'Settings', 'gianism' ) }>
 					<TextControl
-						label={ __( 'Redirect URL', 'wp-gianism' ) }
-						help={ __( 'URL to redirect after login. Leave empty for current page.', 'wp-gianism' ) }
+						label={ __( 'Redirect URL', 'gianism' ) }
+						help={ __( 'URL to redirect after login. Leave empty for current page.', 'gianism' ) }
 						value={ redirectTo }
 						onChange={ ( value ) => setAttributes( { redirectTo: value } ) }
 					/>

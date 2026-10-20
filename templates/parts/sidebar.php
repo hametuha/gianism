@@ -5,16 +5,16 @@ defined( 'ABSPATH' ) || exit;
 ?>
 <div class="sidebar">
 	<div id="index">
-		<h4><?php _e( 'Index', 'wp-gianism' ); ?></h4>
+		<h4><?php _e( 'Index', 'gianism' ); ?></h4>
 		<ol id="index-list">
 		</ol>
 
-		<h4><?php _e( 'Support', 'wp-gianism' ); ?></h4>
+		<h4><?php _e( 'Support', 'gianism' ); ?></h4>
 
 		<p class="forum-link">
 			<?php
 			printf(
-				__( 'Have some questions? Go to our support site <a href="%s" target="_blank">gianism.info</a>!', 'wp-gianism' ),
+				__( 'Have some questions? Go to our support site <a href="%s" target="_blank">gianism.info</a>!', 'gianism' ),
 				gianism_utm_link(
 					'https://gianism.info/',
 					[
@@ -26,7 +26,7 @@ defined( 'ABSPATH' ) || exit;
 		</p>
 
 		<p class="github-link">
-			<?php printf( __( 'This plugin\'s is hosted on <a href="%s">Github</a>. Pull requests are welcomed.', 'wp-gianism' ), 'https://github.com/fumikito/Gianism' ); ?>
+			<?php printf( __( 'This plugin\'s is hosted on <a href="%s">Github</a>. Pull requests are welcomed.', 'gianism' ), 'https://github.com/fumikito/Gianism' ); ?>
 		</p>
 
 		<?php
@@ -43,10 +43,10 @@ defined( 'ABSPATH' ) || exit;
 					method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate"
 					target="_blank" novalidate>
 					<div id="mc_embed_signup_scroll">
-						<h4><?php _e( 'Join our News Letter!', 'wp-gianism' ); ?></h4>
+						<h4><?php _e( 'Join our News Letter!', 'gianism' ); ?></h4>
 						<div class="mc-field-group">
 							<label for="mce-EMAIL">
-								<?php _e( 'Email', 'wp-gianism' ); ?>
+								<?php _e( 'Email', 'gianism' ); ?>
 								<span class="asterisk">*</span>
 							</label>
 							<input type="email" name="EMAIL" class="required email" id="mce-EMAIL" value="<?php echo esc_attr( $user->user_email ); ?>">
@@ -54,13 +54,13 @@ defined( 'ABSPATH' ) || exit;
 						<div class="mc-field-2col mc-field-name-<?php echo esc_attr( get_locale() ); ?>">
 							<div>
 								<div class="mc-field-group first-name">
-									<label for="mce-FNAME"><?php _e( 'First Name', 'wp-gianism' ); ?></label>
+									<label for="mce-FNAME"><?php _e( 'First Name', 'gianism' ); ?></label>
 									<input type="text" value="<?php echo esc_attr( get_user_meta( $user->ID, 'first_name', true ) ); ?>" name="FNAME" class="" id="mce-FNAME">
 								</div>
 							</div>
 							<div>
 								<div class="mc-field-group last-name">
-									<label for="mce-LNAME"><?php _e( 'Last Name', 'wp-gianism' ); ?></label>
+									<label for="mce-LNAME"><?php _e( 'Last Name', 'gianism' ); ?></label>
 									<input type="text" value="<?php echo esc_attr( get_user_meta( $user->ID, 'last_name', true ) ); ?>" name="LNAME" class="" id="mce-LNAME">
 								</div>
 							</div>
@@ -70,26 +70,26 @@ defined( 'ABSPATH' ) || exit;
 									<label class="inline" for="mce-group[1111]-1111-0">
 										<input type="checkbox" value="1" name="group[1111][1]"
 												id="mce-group[1111]-1111-0" <?php checked( str_contains( $locale, 'en_' ) ); ?>>
-										<?php _e( 'English', 'wp-gianism' ); ?>
+										<?php _e( 'English', 'gianism' ); ?>
 									</label>
 									<label class="inline" for="mce-group[1111]-1111-1">
 										<input type="checkbox" value="2" name="group[1111][2]"
 												id="mce-group[1111]-1111-1" <?php checked( 'ja', $locale ); ?>>
-										<?php _e( 'Japanese', 'wp-gianism' ); ?>
+										<?php _e( 'Japanese', 'gianism' ); ?>
 									</label>
 						</p>
 						<input type="hidden" name="group[1115]" value="16"/>
 						<input type="hidden" name="b_9b5777bb4451fb83373411d34_1e82da4148" value="">
 					</div>
 					<p class="submit">
-						<input type="submit" value="<?php _e( 'Subscribe', 'wp-gianism' ); ?>" name="subscribe"
+						<input type="submit" value="<?php _e( 'Subscribe', 'gianism' ); ?>" name="subscribe"
 								id="mc-embedded-subscribe" class="button-primary">
 					</p>
 				</form>
 			</div>
 		</div>
 
-		<h4><?php _e( 'Our social Account', 'wp-gianism' ); ?></h4>
+		<h4><?php _e( 'Our social Account', 'gianism' ); ?></h4>
 
 		<div class="fb-page" data-href="https://www.facebook.com/gianism.info" data-small-header="true"
 			data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"

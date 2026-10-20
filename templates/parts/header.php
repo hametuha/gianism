@@ -18,7 +18,7 @@ defined( 'ABSPATH' ) || exit;
 
 	<header class="gianism-header">
 		<p class="gianism-header-text">Gianism</p>
-		<p class="gianism-header-lead"><?php _e( 'Make your WordPress more social. Simple but Extensible.', 'wp-gianism' ); ?></p>
+		<p class="gianism-header-lead"><?php _e( 'Make your WordPress more social. Simple but Extensible.', 'gianism' ); ?></p>
 	</header>
 
 	<?php if ( $this->views ) : ?>

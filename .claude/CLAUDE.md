@@ -105,6 +105,24 @@ composer fix    # 自動修正
 - `app/Gianism/Controller/` - コントローラー
 - `templates/` - テンプレートファイル
 
+## 翻訳（i18n）
+
+- テキストドメインは `gianism`（WordPress.org のスラッグと同じ）。翻訳関数は必ず `__( '...', 'gianism' )` などの標準関数を使う（`$this->_()` / `$this->e()` は非推奨）
+- 翻訳の正本は translate.wordpress.org（GlotPress）。WordPress.org の言語パックがあればそちらが優先される
+- `language/gianism-ja.po` / `.mo` は言語パックがない環境向けのフォールバック。文言を追加・変更したら更新する:
+
+```bash
+# POT 再生成（Docker の WP-CLI を使う）
+docker exec gianism-local-wp wp --allow-root i18n make-pot wp-content/plugins/gianism wp-content/plugins/gianism/language/gianism.pot \
+  --slug=gianism --domain=gianism --exclude=vendor,node_modules,assets,tests,bin
+# ja.po を更新して未訳を埋め、mo を生成
+msgmerge --update --backup=none --no-fuzzy-matching language/gianism-ja.po language/gianism.pot
+msgattrib --untranslated language/gianism-ja.po   # 未訳の確認
+msgfmt -c -o language/gianism-ja.mo language/gianism-ja.po
+```
+
+- リリース前に `gianism-ja.po` の訳を GlotPress にもインポートする（PTE 権限が必要）
+
 ## Git運用
 
 - メインブランチ: `master`

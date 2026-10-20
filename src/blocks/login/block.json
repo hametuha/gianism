@@ -18,7 +18,7 @@
 		"html": false,
 		"align": true
 	},
-	"textdomain": "wp-gianism",
+	"textdomain": "gianism",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",
 	"style": [ "file:./style-index.css", "gianism" ],

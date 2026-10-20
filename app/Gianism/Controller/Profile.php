@@ -46,16 +46,16 @@ class Profile extends AbstractController {
 		if ( $this->profile_checker->is_password_unknown( $user_id ) && $current_user->user_pass !== $old_user_data->user_pass ) {
 			// Password changed
 			delete_user_meta( $user_id, '_wpg_unknown_password' );
-			$this->add_message( __( 'Your password is now on your own!', 'wp-gianism' ) );
+			$this->add_message( __( 'Your password is now on your own!', 'gianism' ) );
 		}
 		// Check if email is proper and old one is pseudo
 		if ( $old_user_data->user_email !== $current_user->user_email && $this->profile_checker->is_pseudo_mail( $old_user_data->user_email ) ) {
 			if ( $this->profile_checker->is_pseudo_mail( $current_user->user_email ) ) {
 				// email isn't changed.
-				$this->add_message( __( 'You mail address is still pseudo one! Please change it to valid one.', 'wp-gianism' ), true );
+				$this->add_message( __( 'You mail address is still pseudo one! Please change it to valid one.', 'gianism' ), true );
 			} else {
 				// O.K.
-				$this->add_message( __( 'Your email seems to be valid now.', 'wp-gianism' ) );
+				$this->add_message( __( 'Your email seems to be valid now.', 'gianism' ) );
 			}
 		}
 	}
@@ -69,7 +69,7 @@ class Profile extends AbstractController {
 		$notices = $this->profile_notices( $user );
 		?>
 		<h3 class="wpg-connect-header">
-			<i class="lsf lsf-link"></i> <?php _e( 'Connection with SNS', 'wp-gianism' ); ?>
+			<i class="lsf lsf-link"></i> <?php _e( 'Connection with SNS', 'gianism' ); ?>
 		</h3>
 		<?php if ( ! empty( $notices->get_error_messages() ) ) : ?>
 			<ul class="wpg-notice">
@@ -96,11 +96,11 @@ class Profile extends AbstractController {
 		$error = new \WP_Error();
 		// show password notice
 		if ( get_user_meta( $user->ID, '_wpg_unknown_password', true ) ) {
-			$error->add( 'unknown_password', __( 'Your password is automatically generated. Please <strong><a href="#pass1">update password</a> to your own</strong> before disconnecting your account.', 'wp-gianism' ) );
+			$error->add( 'unknown_password', __( 'Your password is automatically generated. Please <strong><a href="#pass1">update password</a> to your own</strong> before disconnecting your account.', 'gianism' ) );
 		}
 		// Check if mail address is pseudo
 		if ( $this->profile_checker->is_pseudo_mail( $user->user_email ) ) {
-			$error->add( 'invalid_email', __( 'Your mail address is automatically generated and is pseudo. <a href="#email">Changing it</a> to valid mail address is highly recommended, else <strong>you might be unable to log in</strong>.', 'wp-gianism' ) );
+			$error->add( 'invalid_email', __( 'Your mail address is automatically generated and is pseudo. <a href="#email">Changing it</a> to valid mail address is highly recommended, else <strong>you might be unable to log in</strong>.', 'gianism' ) );
 		}
 		return apply_filters( 'gianism_user_profile_notices', $error, $user );
 	}
@@ -113,14 +113,14 @@ class Profile extends AbstractController {
 	public function parent_site_link( \WP_User $user ) {
 		?>
 		<h3 class="wpg-connect-header">
-			<?php _e( 'Connection with SNS', 'wp-gianism' ); ?>
+			<?php _e( 'Connection with SNS', 'gianism' ); ?>
 		</h3>
 		<p>
 			<?php
 			echo wp_kses_post(
 				sprintf(
 				// translators: %s is admin url.
-					__( 'Please setup SNS connection at <a href="%s">parent site\'s profile page</a>.', 'wp-gianism' ),
+					__( 'Please setup SNS connection at <a href="%s">parent site\'s profile page</a>.', 'gianism' ),
 					get_admin_url( $this->option->get_parent_blog_id(), 'profile.php' )
 				)
 			);
