@@ -168,7 +168,7 @@ class Google extends AbstractService {
 						$this->test_user_can_register();
 						// Check email
 						if ( email_exists( $email ) ) {
-							throw new \Exception( $this->duplicate_account_string() );
+							throw new \Exception( $this->duplicate_email_string() );
 						}
 						// Create user name
 						$user_name = $this->valid_username_from_mail( $email );

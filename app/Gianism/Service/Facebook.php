@@ -288,7 +288,7 @@ class Facebook extends NoMailService {
 						}
 						// Does mail duplicated?
 						if ( $this->mail_owner( $email ) ) {
-							throw new \Exception( $this->duplicate_account_string() );
+							throw new \Exception( $this->duplicate_email_string() );
 						}
 						/**
 						 * Filter default user login name on register.
