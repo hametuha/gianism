@@ -60,10 +60,13 @@ template: |
   - [ ] Site loads without errors (white screen check)
   - [ ] Plugin is active and working
   - [ ] Facebook login works
-  - [ ] Twitter login works (if enabled)
+  - [ ] X login works (if enabled)
   - [ ] Google login works (if enabled)
+  - [ ] LINE login works (if enabled)
   - [ ] User account connection/disconnection works
   - [ ] Admin settings page loads and saves correctly
+  - [ ] Admin screens are translated (Japanese)
+  - [ ] SNS Login block works in the block editor
 
   ## Deploy Instructions
 
@@ -71,3 +74,10 @@ template: |
   2. Complete the checklist above
   3. If all tests pass, publish this release
   4. Publishing will trigger automatic deployment to WordPress.org
+
+  ## After Release
+
+  If translatable strings were added or changed:
+
+  1. Wait for new strings to appear on [translate.wordpress.org (Stable)](https://translate.wordpress.org/projects/wp-plugins/gianism/stable/ja/default/)
+  2. Import `language/gianism-ja.po` and approve (PTE)
