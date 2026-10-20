@@ -11,23 +11,23 @@ defined( 'ABSPATH' ) or die();
 	<blockquote class="gianism-home-quote">
 		<i class="lsf lsf-quote"></i>
 		<p>
-			<?php $this->e( 'What you have is mine, what I have is also mine!' ); ?>
+			<?php _e( 'What you have is mine, what I have is also mine!', 'wp-gianism' ); ?>
 		</p>
-		<cite>- <?php $this->e( 'Takeshi Gōda' ); ?> -</cite>
+		<cite>- <?php _e( 'Takeshi Gōda', 'wp-gianism' ); ?> -</cite>
 	</blockquote>
 
 	<p class="gianism-home-lead">
-		<?php $this->e( 'Gianism let your site <strong>more social</strong>. Your users can log in to your site via popular SNS.' ); ?>
-		<?php $this->e( 'Besides that, some powerful add-ons are available. Your user can be your evangelist. You can even automate your own WordPress. Interact with APIs and make something great!' ); ?>
+		<?php _e( 'Gianism let your site <strong>more social</strong>. Your users can log in to your site via popular SNS.', 'wp-gianism' ); ?>
+		<?php _e( 'Besides that, some powerful add-ons are available. Your user can be your evangelist. You can even automate your own WordPress. Interact with APIs and make something great!', 'wp-gianism' ); ?>
 	</p>
 
 	<table class="gianism-home-table">
-		<caption><?php $this->e( 'Available Services' ); ?></caption>
+		<caption><?php _e( 'Available Services', 'wp-gianism' ); ?></caption>
 		<thead>
 			<tr>
-				<th><?php $this->e( 'Name' ); ?></th>
-				<th class="status"><?php $this->e( 'Status' ); ?></th>
-				<th class="type"><?php $this->e( 'Type' ); ?></th>
+				<th><?php _e( 'Name', 'wp-gianism' ); ?></th>
+				<th class="status"><?php _e( 'Status', 'wp-gianism' ); ?></th>
+				<th class="type"><?php _e( 'Type', 'wp-gianism' ); ?></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -43,9 +43,9 @@ defined( 'ABSPATH' ) or die();
 				</td>
 				<td class="type">
 					<?php if ( $service['default'] ) : ?>
-						<?php $this->e( 'Default' ); ?>
+						<?php _e( 'Default', 'wp-gianism' ); ?>
 					<?php else : ?>
-						<?php $this->e( 'Add on' ); ?>
+						<?php _e( 'Add on', 'wp-gianism' ); ?>
 					<?php endif; ?>
 				</td>
 			</tr>
@@ -56,7 +56,7 @@ defined( 'ABSPATH' ) or die();
 	<p class="description">
 		<?php
 		printf(
-			$this->_( 'You can enable all services via <a href="%1$s">Setting</a> and find more services at <a href="%2$s">gianism.info</a>.' ),
+			__( 'You can enable all services via <a href="%1$s">Setting</a> and find more services at <a href="%2$s">gianism.info</a>.', 'wp-gianism' ),
 			$this->setting_url( 'setting' ),
 			gianism_utm_link( 'https://gianism.info/', [ 'utm-medium' => 'dashboard' ] )
 		);
@@ -65,13 +65,13 @@ defined( 'ABSPATH' ) or die();
 
 
 	<table class="gianism-home-table">
-		<caption><?php $this->e( 'Add-ons' ); ?></caption>
+		<caption><?php _e( 'Add-ons', 'wp-gianism' ); ?></caption>
 		<thead>
 		<tr>
-			<th><?php $this->e( 'Name' ); ?></th>
-			<th><?php $this->e( 'Description' ); ?></th>
-			<th class="status"><?php $this->e( 'Status' ); ?></th>
-			<th class="type"><?php $this->e( 'Type' ); ?></th>
+			<th><?php _e( 'Name', 'wp-gianism' ); ?></th>
+			<th><?php _e( 'Description', 'wp-gianism' ); ?></th>
+			<th class="status"><?php _e( 'Status', 'wp-gianism' ); ?></th>
+			<th class="type"><?php _e( 'Type', 'wp-gianism' ); ?></th>
 		</tr>
 		</thead>
 		<tbody>
@@ -90,9 +90,9 @@ defined( 'ABSPATH' ) or die();
 				</td>
 				<td class="type">
 					<?php if ( $this->service->is_default_plugin( $plugin->plugin_name ) ) : ?>
-						<?php $this->e( 'Default' ); ?>
+						<?php _e( 'Default', 'wp-gianism' ); ?>
 					<?php else : ?>
-						<?php $this->e( 'Add on' ); ?>
+						<?php _e( 'Add on', 'wp-gianism' ); ?>
 					<?php endif; ?>
 				</td>
 			</tr>
@@ -103,7 +103,7 @@ defined( 'ABSPATH' ) or die();
 	<p class="description">
 		<?php
 		printf(
-			$this->_( 'Are you interested with add-ons? Find more at <a href="%s">gianism.info</a>!' ),
+			__( 'Are you interested with add-ons? Find more at <a href="%s">gianism.info</a>!', 'wp-gianism' ),
 			gianism_utm_link( 'https://gianism.info/', [ 'utm-medium' => 'dashboard' ] )
 		);
 		?>

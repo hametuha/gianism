@@ -19,8 +19,8 @@ class SettingScreen extends Screen {
 	protected function admin_init() {
 		// Add admin page
 		add_options_page(
-			$this->_( 'Gianism Setting' ),
-			$this->_( 'Gianism Setting' ),
+			__( 'Gianism Setting', 'wp-gianism' ),
+			__( 'Gianism Setting', 'wp-gianism' ),
 			'manage_options',
 			'gianism',
 			[ $this, 'render' ]
@@ -29,11 +29,11 @@ class SettingScreen extends Screen {
 		add_action( 'load-settings_page_gianism', [ $this, 'update_option' ] );
 		// Add view
 		foreach ( [
-			'home'      => sprintf( '<i class="lsf lsf-home"></i> %s', $this->_( 'Home' ) ),
-			'setting'   => sprintf( '<i class="lsf lsf-paramater"></i> %s', $this->_( 'Setting' ) ),
-			'setup'     => sprintf( '<i class="lsf lsf-help"></i> %s', $this->_( 'How to set up' ) ),
-			'customize' => sprintf( '<i class="lsf lsf-wrench"></i> %s', $this->_( 'Customize' ) ),
-			'advanced'  => sprintf( '<i class="lsf lsf-magic"></i> %s', $this->_( 'Advanced Usage' ) ),
+			'home'      => sprintf( '<i class="lsf lsf-home"></i> %s', __( 'Home', 'wp-gianism' ) ),
+			'setting'   => sprintf( '<i class="lsf lsf-paramater"></i> %s', __( 'Setting', 'wp-gianism' ) ),
+			'setup'     => sprintf( '<i class="lsf lsf-help"></i> %s', __( 'How to set up', 'wp-gianism' ) ),
+			'customize' => sprintf( '<i class="lsf lsf-wrench"></i> %s', __( 'Customize', 'wp-gianism' ) ),
+			'advanced'  => sprintf( '<i class="lsf lsf-magic"></i> %s', __( 'Advanced Usage', 'wp-gianism' ) ),
 		] as $slug => $label ) {
 			$this->views[ $slug ] = $label;
 		}

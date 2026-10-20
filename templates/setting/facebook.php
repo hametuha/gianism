@@ -7,7 +7,7 @@ defined( 'ABSPATH' ) or die();
 <table class="form-table">
 	<tbody>
 	<tr>
-		<th><label><?php $this->e( 'Connect with Facebook' ); ?></label></th>
+		<th><label><?php _e( 'Connect with Facebook', 'wp-gianism' ); ?></label></th>
 		<td>
 			<?php $this->switch_button( 'fb_enabled', $this->option->is_enabled( 'facebook' ) ); ?>
 			<p class="description">
@@ -33,21 +33,21 @@ defined( 'ABSPATH' ) or die();
 		</td>
 	</tr>
 	<tr>
-		<th><label for="fb_app_id"><?php $this->e( 'App ID' ); ?></label></th>
+		<th><label for="fb_app_id"><?php _e( 'App ID', 'wp-gianism' ); ?></label></th>
 		<td>
 			<input type="text" class="regular-text" name="fb_app_id" id="fb_app_id"
 					value="<?php echo esc_attr( $instance->fb_app_id ); ?>"/>
 		</td>
 	</tr>
 	<tr>
-		<th><label for="fb_app_secret"><?php $this->e( 'App Secret' ); ?></label></th>
+		<th><label for="fb_app_secret"><?php _e( 'App Secret', 'wp-gianism' ); ?></label></th>
 		<td>
 			<input type="text" class="regular-text" name="fb_app_secret" id="fb_app_secret"
 					value="<?php echo esc_attr( $instance->fb_app_secret ); ?>"/>
 		</td>
 	</tr>
 	<tr>
-		<th><label for="fb_version"><?php $this->e( 'API Version' ); ?></label></th>
+		<th><label for="fb_version"><?php _e( 'API Version', 'wp-gianism' ); ?></label></th>
 		<td>
 			<input type="text" class="regular-text" name="fb_version" id="fb_version" placeholder="<?php echo esc_attr( $instance->minimum_api_version ); ?>"
 					value="<?php echo esc_attr( $instance->fb_version ); ?>"/>
@@ -67,7 +67,7 @@ defined( 'ABSPATH' ) or die();
 			<input type="text" class="regular-text" name="fb_redirect_uri" id="fb_redirect_uri" readonly
 					value="<?php echo esc_attr( $end_point ); ?>"/>
 			<a class="button" href="<?php echo esc_attr( $end_point ); ?>"
-				onclick="window.prompt('<?php esc_attr_e( 'Please copy this URL.', 'wp-gianism' ); ?>', this.href); return false;"><?php $this->e( 'Copy' ); ?></a>
+				onclick="window.prompt('<?php esc_attr_e( 'Please copy this URL.', 'wp-gianism' ); ?>', this.href); return false;"><?php _e( 'Copy', 'wp-gianism' ); ?></a>
 			<p class="description">
 				<?php
 				$this->new_from( '3.0.9' );
@@ -86,7 +86,7 @@ defined( 'ABSPATH' ) or die();
 		</td>
 	</tr>
 	<tr>
-		<th><label><?php $this->e( 'Use Facebook API' ); ?></label></th>
+		<th><label><?php _e( 'Use Facebook API', 'wp-gianism' ); ?></label></th>
 		<td>
 			<?php $this->switch_button( 'fb_use_api', $instance->fb_use_api ); ?>
 			<p class="description">

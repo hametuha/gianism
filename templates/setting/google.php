@@ -9,32 +9,32 @@ defined( 'ABSPATH' ) || exit;
 <table class="form-table">
 	<tbody>
 	<tr>
-		<th><label><?php printf( $this->_( 'Connect with %s' ), 'Google' ); ?></label></th>
+		<th><label><?php printf( __( 'Connect with %s', 'wp-gianism' ), 'Google' ); ?></label></th>
 		<td>
 			<?php $this->switch_button( 'ggl_enabled', $this->option->is_enabled( 'google' ) ); ?>
 			<p class="description">
-				<?php printf( $this->_( 'You have to create %1$s App <a target="_blank" href="%2$s">here</a> to get required infomation.' ), 'Google API Console', 'https://code.google.com/apis/console' ); ?>
-				<?php printf( $this->_( 'See detail at <a href="%1$s">%2$s</a>.' ), $this->setting_url( 'setup' ), $this->_( 'How to set up' ) ); ?>
+				<?php printf( __( 'You have to create %1$s App <a target="_blank" href="%2$s">here</a> to get required infomation.', 'wp-gianism' ), 'Google API Console', 'https://code.google.com/apis/console' ); ?>
+				<?php printf( __( 'See detail at <a href="%1$s">%2$s</a>.', 'wp-gianism' ), $this->setting_url( 'setup' ), __( 'How to set up', 'wp-gianism' ) ); ?>
 			</p>
 		</td>
 	</tr>
 
 	<tr>
-		<th><label for="ggl_consumer_key"><?php $this->e( 'Client ID' ); ?></label></th>
+		<th><label for="ggl_consumer_key"><?php _e( 'Client ID', 'wp-gianism' ); ?></label></th>
 		<td>
 			<input class="regular-text" type="text" name="ggl_consumer_key" id="ggl_consumer_key"
 				value="<?php echo esc_attr( $instance->ggl_consumer_key ); ?>"/>
 		</td>
 	</tr>
 	<tr>
-		<th><label for="ggl_consumer_secret"><?php $this->e( 'Client Secret' ); ?></label></th>
+		<th><label for="ggl_consumer_secret"><?php _e( 'Client Secret', 'wp-gianism' ); ?></label></th>
 		<td>
 			<input class="regular-text" type="text" name="ggl_consumer_secret" id="ggl_consumer_secret"
 				value="<?php echo esc_attr( $instance->ggl_consumer_secret ); ?>"/>
 		</td>
 	</tr>
 	<tr>
-		<th><label for="ggl_redirect_uri"><?php $this->e( 'Redirect URI' ); ?></label></th>
+		<th><label for="ggl_redirect_uri"><?php _e( 'Redirect URI', 'wp-gianism' ); ?></label></th>
 		<td>
 			<p class="description">
 				<?php
@@ -55,13 +55,13 @@ defined( 'ABSPATH' ) || exit;
 				<br/>
 				<?php
 				$this->new_from( '2.0' );
-				printf( $this->_( '<strong>Notice: </strong> Setting is changed on <code>Gianims v2.0</code>. You must set up again on Google API Console.' ) );
+				printf( __( '<strong>Notice: </strong> Setting is changed on <code>Gianims v2.0</code>. You must set up again on Google API Console.', 'wp-gianism' ) );
 				?>
 			</p>
 		</td>
 	</tr>
 	<tr>
-		<th><label for="ggl_workspace_mode"><?php $this->e( 'Workspace Limited' ); ?></label></th>
+		<th><label for="ggl_workspace_mode"><?php _e( 'Workspace Limited', 'wp-gianism' ); ?></label></th>
 		<td>
 			<?php $this->switch_button( 'ggl_workspace_mode', $instance->ggl_workspace_mode, 1 ); ?>
 			<br />
@@ -75,7 +75,7 @@ defined( 'ABSPATH' ) || exit;
 		</td>
 	</tr>
 	<tr>
-		<th><label for="ggl_workspace_allowed_domains"><?php $this->e( 'Allowed Domains' ); ?></label></th>
+		<th><label for="ggl_workspace_allowed_domains"><?php _e( 'Allowed Domains', 'wp-gianism' ); ?></label></th>
 		<td>
 			<?php
 			$allowed_domains = $instance->ggl_workspace_allowed_domains;

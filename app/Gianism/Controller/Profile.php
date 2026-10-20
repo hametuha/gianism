@@ -52,10 +52,10 @@ class Profile extends AbstractController {
 		if ( $old_user_data->user_email !== $current_user->user_email && $this->profile_checker->is_pseudo_mail( $old_user_data->user_email ) ) {
 			if ( $this->profile_checker->is_pseudo_mail( $current_user->user_email ) ) {
 				// email isn't changed.
-				$this->add_message( $this->_( 'You mail address is still pseudo one! Please change it to valid one.' ), true );
+				$this->add_message( __( 'You mail address is still pseudo one! Please change it to valid one.', 'wp-gianism' ), true );
 			} else {
 				// O.K.
-				$this->add_message( $this->_( 'Your email seems to be valid now.' ) );
+				$this->add_message( __( 'Your email seems to be valid now.', 'wp-gianism' ) );
 			}
 		}
 	}
@@ -69,7 +69,7 @@ class Profile extends AbstractController {
 		$notices = $this->profile_notices( $user );
 		?>
 		<h3 class="wpg-connect-header">
-			<i class="lsf lsf-link"></i> <?php $this->e( 'Connection with SNS' ); ?>
+			<i class="lsf lsf-link"></i> <?php _e( 'Connection with SNS', 'wp-gianism' ); ?>
 		</h3>
 		<?php if ( ! empty( $notices->get_error_messages() ) ) : ?>
 			<ul class="wpg-notice">
@@ -113,7 +113,7 @@ class Profile extends AbstractController {
 	public function parent_site_link( \WP_User $user ) {
 		?>
 		<h3 class="wpg-connect-header">
-			<?php $this->e( 'Connection with SNS' ); ?>
+			<?php _e( 'Connection with SNS', 'wp-gianism' ); ?>
 		</h3>
 		<p>
 			<?php
