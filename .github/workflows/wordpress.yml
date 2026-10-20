@@ -16,6 +16,8 @@ jobs:
       url: https://wordpress.org/plugins/gianism/
     steps:
       - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       - name: Setup PHP with composer v2
         uses: shivammathur/setup-php@v2

@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@main
+        with:
+          persist-credentials: false
 
       - name: Setup PHP with composer v2
         uses: shivammathur/setup-php@v2
