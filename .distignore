@@ -1,19 +1,39 @@
-.browserlistrc
+# Version control & CI
 .git
 .gitignore
 .github
 .wordpress-org
-tests
-bin
+.distignore
+
+# AI agent settings
+.claude
+CLAUDE.md
+
+# Node / front-end tooling
 node_modules
 package.json
 package-lock.json
+.node-version
+.browserlistrc
+.stylelintrc.json
+eslint.config.mjs
+
+# Build sources (compiled into assets/ by `npm run package`)
+/src
+
+# PHP tooling
+composer.lock
+phpcs.ruleset.xml
 phpdoc.xml
 phpstan.neon
 phpunit.xml.dist
-phpcs.ruleset.xml
-composer.lock
+tests
+bin
+
+# Documents (readme.txt is generated from README.md on build)
 README.md
+/CHANGELOG.md
+
+# Backup files created by bin/build.sh
 readme.txt.bak
 wp-gianism.php.bak
-CLAUDE.md
