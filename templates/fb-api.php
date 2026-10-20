@@ -7,48 +7,48 @@ defined( 'ABSPATH' ) or die();
 $facebook = $this->service->get( 'facebook' );
 
 ?>
-<h3><i class="lsf lsf-facebook"></i> <?php _e( 'Token setting', 'wp-gianism' ); ?></h3>
+<h3><i class="lsf lsf-facebook"></i> <?php _e( 'Token setting', 'gianism' ); ?></h3>
 <?php
 $error = $facebook->admin;
 if ( is_wp_error( $error ) ) :
 	?>
 	<p class="danger">
 		<?php if ( (int) $error->get_error_code() === 410 ) : ?>
-			<?php _e( 'Token is outdated. Click link and get new one.', 'wp-gianism' ); ?>
+			<?php _e( 'Token is outdated. Click link and get new one.', 'gianism' ); ?>
 		<?php else : ?>
-			<?php _e( 'Token is not set. Please click link below and get one.', 'wp-gianism' ); ?>
+			<?php _e( 'Token is not set. Please click link below and get one.', 'gianism' ); ?>
 		<?php endif; ?>
 	</p>
 <?php else : ?>
 	<p class="notice">
 		<?php
 		printf(
-			__( 'O.K. You have permission. If you want to renew token, please click link below. Token will be valid for %d days.', 'wp-gianism' ),
+			__( 'O.K. You have permission. If you want to renew token, please click link below. Token will be valid for %d days.', 'gianism' ),
 			( 60 - floor( ( time() - $this->option->get( 'gianism_facebook_admin_refreshed', 0 ) ) / 60 / 60 / 24 ) )
 		);
 		?>
 	</p>
 <?php endif; ?>
-<a class="button" href="<?php echo esc_url( $facebook->get_admin_connect_link() ); ?>"><?php _e( 'Get Token', 'wp-gianism' ); ?>
-	<small><?php _e( 'Read Only', 'wp-gianism' ); ?></small>
+<a class="button" href="<?php echo esc_url( $facebook->get_admin_connect_link() ); ?>"><?php _e( 'Get Token', 'gianism' ); ?>
+	<small><?php _e( 'Read Only', 'gianism' ); ?></small>
 </a>
 <a class="button"
-	href="<?php echo esc_url( $facebook->get_admin_connect_link( true ) ); ?>"><?php _e( 'Get Token', 'wp-gianism' ); ?>
-	<small><?php _e( 'Publish', 'wp-gianism' ); ?></small>
+	href="<?php echo esc_url( $facebook->get_admin_connect_link( true ) ); ?>"><?php _e( 'Get Token', 'gianism' ); ?>
+	<small><?php _e( 'Publish', 'gianism' ); ?></small>
 </a>
 
-<h3><i class="lsf lsf-friend"></i> <?php _e( 'Account to use', 'wp-gianism' ); ?></h3>
+<h3><i class="lsf lsf-friend"></i> <?php _e( 'Account to use', 'gianism' ); ?></h3>
 <?php if ( is_wp_error( $facebook->admin ) ) : ?>
-	<p class="description"><?php _e( 'You need access token to manage accounts. Click links above and you can get Facebook API token.', 'wp-gianism' ); ?></p>
+	<p class="description"><?php _e( 'You need access token to manage accounts. Click links above and you can get Facebook API token.', 'gianism' ); ?></p>
 <?php elseif ( ! $facebook->admin_account ) : ?>
-	<p class="danger"><?php _e( 'Failed to get your account. Please renew token.', 'wp-gianism' ); ?></p>
+	<p class="danger"><?php _e( 'Failed to get your account. Please renew token.', 'gianism' ); ?></p>
 <?php else : ?>
-	<p class="description"><?php _e( 'Please select account to use.', 'wp-gianism' ); ?></p>
+	<p class="description"><?php _e( 'Please select account to use.', 'gianism' ); ?></p>
 	<form method="post" action="<?php echo esc_url( $this->setting_url( 'fb-api' ) ); ?>">
 		<?php wp_nonce_field( 'gianism_fb_account' ); ?>
 		<table class="form-table">
 			<tr>
-				<th><?php esc_html_e( 'You', 'wp-gianism' ); ?></th>
+				<th><?php esc_html_e( 'You', 'gianism' ); ?></th>
 				<td>
 					<label><input type="radio" name="fb_account_id"
 									value="me"<?php checked( 'me', $facebook->admin_id ); ?> /> <?php echo esc_html( $facebook->admin_account['name'] ); ?>
@@ -56,7 +56,7 @@ if ( is_wp_error( $error ) ) :
 				</td>
 			</tr>
 			<tr>
-				<th><?php _e( 'Your Page', 'wp-gianism' ); ?></th>
+				<th><?php _e( 'Your Page', 'gianism' ); ?></th>
 				<td>
 					<?php
 					$out = [];
@@ -72,7 +72,7 @@ if ( is_wp_error( $error ) ) :
 						echo implode( '<br />', $out );
 					else :
 						?>
-						<p class="description"><?php esc_html_e( 'You have no Facebook page.', 'wp-gianism' ); ?></p>
+						<p class="description"><?php esc_html_e( 'You have no Facebook page.', 'gianism' ); ?></p>
 					<?php endif; ?>
 				</td>
 			</tr>
@@ -81,11 +81,11 @@ if ( is_wp_error( $error ) ) :
 	</form>
 <?php endif; ?>
 
-<h3><i class="lsf lsf-help"></i> <?php esc_html_e( 'How to use', 'wp-gianism' ); ?></h3>
+<h3><i class="lsf lsf-help"></i> <?php esc_html_e( 'How to use', 'gianism' ); ?></h3>
 <p>
 	<?php
 	printf(
-		__( 'You can get token-ready <a href="%s">Facebook PHP SDK\'s API client</a>. For example, get latest news feed and show it on footer.', 'wp-gianism' ),
+		__( 'You can get token-ready <a href="%s">Facebook PHP SDK\'s API client</a>. For example, get latest news feed and show it on footer.', 'gianism' ),
 		'https://developers.facebook.com/docs/reference/php'
 	)
 	?>
@@ -131,7 +131,7 @@ PHP;
 echo esc_html( $string );
 ?>
 </pre>
-<p><?php _e( 'You should know about Facebook Graph API. Useful resources are below.', 'wp-gianism' ); ?></p>
+<p><?php _e( 'You should know about Facebook Graph API. Useful resources are below.', 'gianism' ); ?></p>
 <ol>
 	<li><a href="https://developers.facebook.com/docs/graph-api">Graph API Reference</a></li>
 	<li><a href="https://developers.facebook.com/tools/explorer/">Graph API Explorer</a></li>
@@ -140,7 +140,7 @@ echo esc_html( $string );
 <p>
 	<?php
 	printf(
-		__( 'For more detailed information, please visit our <a target="_blank" href="%s">support site</a>.', 'wp-gianism' ),
+		__( 'For more detailed information, please visit our <a target="_blank" href="%s">support site</a>.', 'gianism' ),
 		gianism_utm_link(
 			'https://gianism.info/',
 			[

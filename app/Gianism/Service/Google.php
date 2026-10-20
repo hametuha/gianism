@@ -159,7 +159,7 @@ class Google extends AbstractService {
 					 */
 					$allowed = apply_filters( 'gianism_google_login_allowed', true, $email, $profile );
 					if ( ! $allowed ) {
-						throw new \Exception( __( 'You are not allowed to login to this site.', 'wp-gianism' ) );
+						throw new \Exception( __( 'You are not allowed to login to this site.', 'gianism' ) );
 					}
 					$plus_id = isset( $profile['id'] ) ? $profile['id'] : 0;
 					$user_id = $this->get_meta_owner( $this->umeta_account, $email );
@@ -231,7 +231,7 @@ class Google extends AbstractService {
 					/** This filter is documented in app/Gianism/Service/Google.php */
 					$allowed = apply_filters( 'gianism_google_login_allowed', true, $email, $profile );
 					if ( ! $allowed ) {
-						throw new \Exception( __( 'You are not allowed to connect this account.', 'wp-gianism' ) );
+						throw new \Exception( __( 'You are not allowed to connect this account.', 'gianism' ) );
 					}
 					$email_owner = $this->get_meta_owner( $this->umeta_account, $email );
 					if ( $email_owner && ( get_current_user_id() !== $email_owner ) ) {
@@ -273,7 +273,7 @@ class Google extends AbstractService {
 						'code'        => $code,
 					]
 				);
-				$this->input->wp_die( sprintf( __( 'Sorry, but wrong access. Please go back to <a href="%1$s">%2$s</a>.', 'wp-gianism' ), home_url( '/' ), get_bloginfo( 'name' ) ), 500, false );
+				$this->input->wp_die( sprintf( __( 'Sorry, but wrong access. Please go back to <a href="%1$s">%2$s</a>.', 'gianism' ), home_url( '/' ), get_bloginfo( 'name' ) ), 500, false );
 				break;
 		}
 	}
@@ -341,7 +341,7 @@ class Google extends AbstractService {
 
 	protected function login_label( $register = false, $context = '' ) {
 		// translators: %s is service name.
-		return sprintf( _x( 'Sign in with %s', 'login label', 'wp-gianism' ), $this->verbose_service_name );
+		return sprintf( _x( 'Sign in with %s', 'login label', 'gianism' ), $this->verbose_service_name );
 	}
 
 	protected function svg_path() {

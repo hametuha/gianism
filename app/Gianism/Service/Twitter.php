@@ -128,7 +128,7 @@ class Twitter extends NoMailService {
 				function () {
 					printf(
 						'<div class="error"><p>%s</p></div>',
-						sprintf( __( 'Twitter Login requires PHP5.5 and over but yours is %s. Every twitter login will be failed.', 'wp-gianism' ), phpversion() )
+						sprintf( __( 'Twitter Login requires PHP5.5 and over but yours is %s. Every twitter login will be failed.', 'gianism' ), phpversion() )
 					);
 				}
 			);
@@ -250,7 +250,7 @@ class Twitter extends NoMailService {
 				try {
 					// Is user logged in?
 					if ( ! is_user_logged_in() ) {
-						throw new \Exception( __( 'You must be logged in.', 'wp-gianism' ) );
+						throw new \Exception( __( 'You must be logged in.', 'gianism' ) );
 					}
 					// Get information from twitter.
 					if ( ! ( $verifier ) || ! $this->validate_token( $token ) ) {
@@ -298,7 +298,7 @@ class Twitter extends NoMailService {
 						'redirect_to' => $redirect_url,
 					]
 				);
-				$this->input->wp_die( sprintf( __( 'Sorry, but wrong access. Please go back to <a href="%1$s">%2$s</a>.', 'wp-gianism' ), home_url( '/' ), get_bloginfo( 'name' ) ), 500, false );
+				$this->input->wp_die( sprintf( __( 'Sorry, but wrong access. Please go back to <a href="%1$s">%2$s</a>.', 'gianism' ), home_url( '/' ), get_bloginfo( 'name' ) ), 500, false );
 				break;
 		}
 	}
@@ -482,7 +482,7 @@ class Twitter extends NoMailService {
 			}
 		}
 		if ( ! $media_ids ) {
-			return new \WP_Error( 500, __( 'Failed to upload media', 'wp-gianism' ) );
+			return new \WP_Error( 500, __( 'Failed to upload media', 'gianism' ) );
 		}
 		return $this->tweet(
 			$text,
@@ -513,24 +513,24 @@ class Twitter extends NoMailService {
 			// This is attachment
 			$path = get_attached_file( $path_or_id );
 			if ( ! $path ) {
-				return new \WP_Error( 404, __( 'File not found.', 'wp-gianism' ) );
+				return new \WP_Error( 404, __( 'File not found.', 'gianism' ) );
 			}
 			$object = $path;
 		} elseif ( preg_match( '#^https?://#u', $path_or_id ) ) {
 			// This is URL
 			$file = @file_get_contents( $path_or_id );
 			if ( ! $file ) {
-				return new \WP_Error( 404, __( 'File not found.', 'wp-gianism' ) );
+				return new \WP_Error( 404, __( 'File not found.', 'gianism' ) );
 			}
 			$path = sys_get_temp_dir() . '/' . tmpfile() . '-' . basename( $path_or_id );
 			if ( ! file_put_contents( $path, $file ) ) {
-				return new \WP_Error( 500, __( 'Failed to download media', 'wp-gianism' ) );
+				return new \WP_Error( 500, __( 'Failed to download media', 'gianism' ) );
 			}
 			$object = $path;
 		} else {
 			// This is file.
 			if ( ! file_exists( $path_or_id ) ) {
-				return new \WP_Error( 404, __( 'File not found.', 'wp-gianism' ) );
+				return new \WP_Error( 404, __( 'File not found.', 'gianism' ) );
 			}
 			$object = $path_or_id;
 		}
@@ -541,7 +541,7 @@ class Twitter extends NoMailService {
 			]
 		);
 		if ( ! $media || empty( $media->media_id_string ) ) {
-			return new \WP_Error( 500, __( 'Failed to upload media to twitter.', 'wp-gianism' ) );
+			return new \WP_Error( 500, __( 'Failed to upload media to twitter.', 'gianism' ) );
 		}
 		/** @var \stdClass $media */
 		return $media->media_id_string;
@@ -558,7 +558,7 @@ class Twitter extends NoMailService {
 	 * @return object|\WP_Error
 	 */
 	public function send_dm( $user_id, $text, $oauth = null ) {
-		return new \WP_Error( 'twitter_api_error', __( 'twitter DM is deprecated.', 'wp-gianism' ) );
+		return new \WP_Error( 'twitter_api_error', __( 'twitter DM is deprecated.', 'gianism' ) );
 	}
 
 	/**
@@ -571,7 +571,7 @@ class Twitter extends NoMailService {
 	 * @return object|\WP_Error Json format object.
 	 */
 	private function follow_me( TwitterOAuth $oauth = null, $screen_name = '' ) {
-		return new \WP_Error( 'twitter_api_error', __( 'Follow API is deprecated.', 'wp-gianism' ) );
+		return new \WP_Error( 'twitter_api_error', __( 'Follow API is deprecated.', 'gianism' ) );
 	}
 
 	/**
@@ -670,7 +670,7 @@ class Twitter extends NoMailService {
 		}
 		$body = json_decode( wp_remote_retrieve_body( $response ) );
 		if ( is_null( $body ) ) {
-			return new \WP_Error( 'twitter_api_error', __( 'Failed to parse API response.', 'wp-gianism' ) );
+			return new \WP_Error( 'twitter_api_error', __( 'Failed to parse API response.', 'gianism' ) );
 		}
 		$errors = new \WP_Error();
 		if ( ! empty( $body->errors ) ) {
@@ -678,7 +678,7 @@ class Twitter extends NoMailService {
 				// v1.1 errors have message/code, v2 errors have detail/title/type.
 				$errors->add(
 					'twitter_api_error',
-					$error->message ?? $error->detail ?? $error->title ?? __( 'Unknown error.', 'wp-gianism' ),
+					$error->message ?? $error->detail ?? $error->title ?? __( 'Unknown error.', 'gianism' ),
 					[
 						'code' => $error->code ?? $error->type ?? '',
 					]

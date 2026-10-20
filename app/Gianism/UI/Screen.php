@@ -118,7 +118,7 @@ abstract class Screen {
 				wp_kses_post(
 					sprintf(
 						// translators: %s is template name.
-						__( 'Template file <code>%s</code> is missing.', 'wp-gianism' ),
+						__( 'Template file <code>%s</code> is missing.', 'gianism' ),
 						esc_html( $name )
 					)
 				)
@@ -209,7 +209,7 @@ abstract class Screen {
 		$current_version = $this->major_version( $this->version );
 		if ( version_compare( $version, $current_version, '>=' ) ) {
 			// translators: %s is version string.
-			printf( '<span class="gianism-new">%s</span>', esc_html( sprintf( __( 'New Since %s', 'wp-gianism' ), $version ) ) );
+			printf( '<span class="gianism-new">%s</span>', esc_html( sprintf( __( 'New Since %s', 'gianism' ), $version ) ) );
 		}
 	}
 

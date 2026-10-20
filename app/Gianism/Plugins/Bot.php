@@ -36,7 +36,7 @@ class Bot extends PluginBase {
 	 * @return string
 	 */
 	public function plugin_description() {
-		return __( 'Enables you to create twitter bot.', 'wp-gianism' );
+		return __( 'Enables you to create twitter bot.', 'gianism' );
 	}
 
 	/**
@@ -93,10 +93,10 @@ class Bot extends PluginBase {
 		$args = apply_filters(
 			'gianism_twitter_bot_post_type_args',
 			[
-				'description'     => __( 'Twitter Bot by Gianism. Never show on admin screen.', 'wp-gianism' ),
-				'label'           => __( 'Twitter Bots', 'wp-gianism' ),
+				'description'     => __( 'Twitter Bot by Gianism. Never show on admin screen.', 'gianism' ),
+				'label'           => __( 'Twitter Bots', 'gianism' ),
 				'labels'          => array(
-					'name' => __( 'Twitter Bot', 'wp-gianism' ),
+					'name' => __( 'Twitter Bot', 'gianism' ),
 				),
 				'public'          => false,
 				'show_ui'         => true,
@@ -118,7 +118,7 @@ class Bot extends PluginBase {
 	 */
 	public function enter_title_here( $title, $post ) {
 		if ( $post->post_type === $this->post_type ) {
-			$title = __( 'Enter this bots name. Ex: Promotion Campaign 2014 mid', 'wp-gianism' );
+			$title = __( 'Enter this bots name. Ex: Promotion Campaign 2014 mid', 'gianism' );
 		}
 
 		return $title;
@@ -177,8 +177,8 @@ class Bot extends PluginBase {
 					'gianism-twitter-bot-helper',
 					'GianismBotLabel',
 					array(
-						'delete'    => __( 'Are you sure to delete this period? You can\'t undo this operation.', 'wp-gianism' ),
-						'duplicate' => __( 'This period is duplicated.', 'wp-gianism' ),
+						'delete'    => __( 'Are you sure to delete this period? You can\'t undo this operation.', 'gianism' ),
+						'duplicate' => __( 'This period is duplicated.', 'gianism' ),
 					)
 				);
 			}
@@ -290,7 +290,7 @@ SQL;
 	public function cron_schedules( array $schedules ) {
 		$schedules['every_10_minutes'] = array(
 			'interval' => 60 * 10,
-			'display'  => __( 'Every 10 minutes check for Gianism twitter bot.', 'wp-gianism' ),
+			'display'  => __( 'Every 10 minutes check for Gianism twitter bot.', 'gianism' ),
 		);
 
 		return $schedules;
@@ -399,7 +399,7 @@ SQL;
 		foreach ( $columns as $key => $column ) {
 			$new_columns[ $key ] = $column;
 			if ( 'date' === $key ) {
-				$new_columns['end_date'] = __( 'End Date', 'wp-gianism' );
+				$new_columns['end_date'] = __( 'End Date', 'gianism' );
 			}
 		}
 
@@ -438,13 +438,13 @@ SQL;
 	public function post_updated_messages( $message ) {
 		global $post;
 		$message[ $this->post_type ] = array(
-			1  => __( 'Tweet updated.', 'wp-gianism' ),
-			4  => __( 'Tweet updated.', 'wp-gianism' ),
-			6  => __( 'Tweet published, thus bot is enabled.', 'wp-gianism' ),
-			7  => __( 'Tweet saved.', 'wp-gianism' ),
-			8  => __( 'Tweet submitted.', 'wp-gianism' ),
-			9  => sprintf( __( 'Tweet scheduled for: <strong>%1$s</strong>. ', 'wp-gianism' ), date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ) ),
-			10 => __( 'Tweet draft updated.', 'wp-gianism' ),
+			1  => __( 'Tweet updated.', 'gianism' ),
+			4  => __( 'Tweet updated.', 'gianism' ),
+			6  => __( 'Tweet published, thus bot is enabled.', 'gianism' ),
+			7  => __( 'Tweet saved.', 'gianism' ),
+			8  => __( 'Tweet submitted.', 'gianism' ),
+			9  => sprintf( __( 'Tweet scheduled for: <strong>%1$s</strong>. ', 'gianism' ), date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ) ),
+			10 => __( 'Tweet draft updated.', 'gianism' ),
 		);
 
 		return $message;

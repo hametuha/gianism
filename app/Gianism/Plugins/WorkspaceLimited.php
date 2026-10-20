@@ -21,7 +21,7 @@ class WorkspaceLimited extends PluginBase {
 	 * @return string
 	 */
 	public function plugin_description() {
-		return __( 'Restrict login to specific Google Workspace domains.', 'wp-gianism' );
+		return __( 'Restrict login to specific Google Workspace domains.', 'gianism' );
 	}
 
 	/**

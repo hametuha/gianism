@@ -7,7 +7,7 @@ defined( 'ABSPATH' ) or die();
 <table class="form-table">
 	<tbody>
 	<tr>
-		<th><label><?php _e( 'Connect with Facebook', 'wp-gianism' ); ?></label></th>
+		<th><label><?php _e( 'Connect with Facebook', 'gianism' ); ?></label></th>
 		<td>
 			<?php $this->switch_button( 'fb_enabled', $this->option->is_enabled( 'facebook' ) ); ?>
 			<p class="description">
@@ -15,7 +15,7 @@ defined( 'ABSPATH' ) or die();
 				echo wp_kses_post(
 					sprintf(
 					// translators: %1$s is service name, %2$s is URL.
-						__( 'You have to create %1$s App <a target="_blank" href="%2$s">here</a> to get required infomation.', 'wp-gianism' ),
+						__( 'You have to create %1$s App <a target="_blank" href="%2$s">here</a> to get required infomation.', 'gianism' ),
 						'Facebook',
 						'https://developers.facebook.com/apps'
 					)
@@ -23,9 +23,9 @@ defined( 'ABSPATH' ) or die();
 				echo wp_kses_post(
 					sprintf(
 					// translators: %1$s is URL, %2$s is label.
-						__( 'See detail at <a href="%1$s">%2$s</a>.', 'wp-gianism' ),
+						__( 'See detail at <a href="%1$s">%2$s</a>.', 'gianism' ),
 						esc_url( $this->setting_url( 'setup' ) ),
-						esc_html__( 'How to set up', 'wp-gianism' )
+						esc_html__( 'How to set up', 'gianism' )
 					)
 				);
 				?>
@@ -33,21 +33,21 @@ defined( 'ABSPATH' ) or die();
 		</td>
 	</tr>
 	<tr>
-		<th><label for="fb_app_id"><?php _e( 'App ID', 'wp-gianism' ); ?></label></th>
+		<th><label for="fb_app_id"><?php _e( 'App ID', 'gianism' ); ?></label></th>
 		<td>
 			<input type="text" class="regular-text" name="fb_app_id" id="fb_app_id"
 					value="<?php echo esc_attr( $instance->fb_app_id ); ?>"/>
 		</td>
 	</tr>
 	<tr>
-		<th><label for="fb_app_secret"><?php _e( 'App Secret', 'wp-gianism' ); ?></label></th>
+		<th><label for="fb_app_secret"><?php _e( 'App Secret', 'gianism' ); ?></label></th>
 		<td>
 			<input type="text" class="regular-text" name="fb_app_secret" id="fb_app_secret"
 					value="<?php echo esc_attr( $instance->fb_app_secret ); ?>"/>
 		</td>
 	</tr>
 	<tr>
-		<th><label for="fb_version"><?php _e( 'API Version', 'wp-gianism' ); ?></label></th>
+		<th><label for="fb_version"><?php _e( 'API Version', 'gianism' ); ?></label></th>
 		<td>
 			<input type="text" class="regular-text" name="fb_version" id="fb_version" placeholder="<?php echo esc_attr( $instance->minimum_api_version ); ?>"
 					value="<?php echo esc_attr( $instance->fb_version ); ?>"/>
@@ -55,19 +55,19 @@ defined( 'ABSPATH' ) or die();
 				<?php
 				$this->new_from( '3.0.0' );
 				// translators: %s is version string.
-				echo wp_kses_post( sprintf( __( 'Enter Facebook API version for your app. Facebook API\'s life cycle is 2 years. Format should be <code>v0.0</code>. Less than minimum version <code>%s</code> will be ignored.', 'wp-gianism' ), $instance->minimum_api_version ) );
+				echo wp_kses_post( sprintf( __( 'Enter Facebook API version for your app. Facebook API\'s life cycle is 2 years. Format should be <code>v0.0</code>. Less than minimum version <code>%s</code> will be ignored.', 'gianism' ), $instance->minimum_api_version ) );
 				?>
 			</p>
 		</td>
 	</tr>
 	<tr>
-		<th><label for="fb_redirect_uri"><?php esc_html_e( 'Redirect URI', 'wp-gianism' ); ?></label></th>
+		<th><label for="fb_redirect_uri"><?php esc_html_e( 'Redirect URI', 'gianism' ); ?></label></th>
 		<td>
 			<?php $end_point = $instance->get_redirect_endpoint(); ?>
 			<input type="text" class="regular-text" name="fb_redirect_uri" id="fb_redirect_uri" readonly
 					value="<?php echo esc_attr( $end_point ); ?>"/>
 			<a class="button" href="<?php echo esc_attr( $end_point ); ?>"
-				onclick="window.prompt('<?php esc_attr_e( 'Please copy this URL.', 'wp-gianism' ); ?>', this.href); return false;"><?php _e( 'Copy', 'wp-gianism' ); ?></a>
+				onclick="window.prompt('<?php esc_attr_e( 'Please copy this URL.', 'gianism' ); ?>', this.href); return false;"><?php _e( 'Copy', 'gianism' ); ?></a>
 			<p class="description">
 				<?php
 				$this->new_from( '3.0.9' );
@@ -75,7 +75,7 @@ defined( 'ABSPATH' ) or die();
 				echo wp_kses_post(
 					sprintf(
 					// translators: %1$s is fb URL, %2$s blog post URL.
-						__( 'Since March 2018, Facebook changes redirect URIs policy and you must set URI above as <a href="%1$s" target="_blank">Valid OAuth Redirect URIs</a>. For more detail, see our <a href="%2$s" target="_blank">blog post</a>.', 'wp-gianism' ),
+						__( 'Since March 2018, Facebook changes redirect URIs policy and you must set URI above as <a href="%1$s" target="_blank">Valid OAuth Redirect URIs</a>. For more detail, see our <a href="%2$s" target="_blank">blog post</a>.', 'gianism' ),
 						esc_attr( $setting_uri ),
 						'https://gianism.info/2018/03/23/failed-facebook-login-since-2018/'
 					)
@@ -86,13 +86,13 @@ defined( 'ABSPATH' ) or die();
 		</td>
 	</tr>
 	<tr>
-		<th><label><?php _e( 'Use Facebook API', 'wp-gianism' ); ?></label></th>
+		<th><label><?php _e( 'Use Facebook API', 'gianism' ); ?></label></th>
 		<td>
 			<?php $this->switch_button( 'fb_use_api', $instance->fb_use_api ); ?>
 			<p class="description">
 				<?php
 				$this->new_from( '2.2' );
-				esc_html_e( 'If enabled, you can get Facebook API Token for this site.', 'wp-gianism' );
+				esc_html_e( 'If enabled, you can get Facebook API Token for this site.', 'gianism' );
 				?>
 			</p>
 			<?php if ( $instance->fb_use_api ) : ?>
@@ -101,7 +101,7 @@ defined( 'ABSPATH' ) or die();
 					echo wp_kses_post(
 						sprintf(
 							// translators: %s is URL.
-							__( 'You must set up token on <a href="%s">Facebook API page</a>.', 'wp-gianism' ),
+							__( 'You must set up token on <a href="%s">Facebook API page</a>.', 'gianism' ),
 							$this->setting_url( 'fb-api' )
 						)
 					);

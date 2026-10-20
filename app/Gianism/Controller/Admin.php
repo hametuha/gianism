@@ -67,15 +67,15 @@ class Admin extends AbstractController {
 		}
 		// No service is available.
 		if ( ! $this->option->is_enabled() ) {
-			$this->invalid_options[] = sprintf( __( 'No service is enabled. Please go to <a href="%s">Gianism Setting</a> and follow instructions there.', 'wp-gianism' ), admin_url( 'options-general.php?page=gianism&view=setting' ) );
+			$this->invalid_options[] = sprintf( __( 'No service is enabled. Please go to <a href="%s">Gianism Setting</a> and follow instructions there.', 'gianism' ), admin_url( 'options-general.php?page=gianism&view=setting' ) );
 		}
 		// Check permalink
 		if ( ! $this->option->get( 'rewrite_rules', '' ) ) {
-			$this->invalid_options[] = sprintf( __( 'You should set rewrite rules. Go to <a href="%s">Permalink Setting</a> and enable it.', 'wp-gianism' ), admin_url( 'options-permalink.php' ) );
+			$this->invalid_options[] = sprintf( __( 'You should set rewrite rules. Go to <a href="%s">Permalink Setting</a> and enable it.', 'gianism' ), admin_url( 'options-permalink.php' ) );
 		}
 		// Check old setting
 		if ( current_user_can( 'manage_options' ) && $this->option->has_invalid_option( 'google_redirect' ) ) {
-			$this->invalid_options[] = sprintf( __( 'Google redirect URL is deprecated since version 2.0. <strong>You must change setting on Google API Console</strong>. Please <a href="%s">update option</a> and follow the instruction there.', 'wp-gianism' ), admin_url( 'options-general.php?page=gianism' ) );
+			$this->invalid_options[] = sprintf( __( 'Google redirect URL is deprecated since version 2.0. <strong>You must change setting on Google API Console</strong>. Please <a href="%s">update option</a> and follow the instruction there.', 'gianism' ), admin_url( 'options-general.php?page=gianism' ) );
 		}
 		add_action( 'admin_notices', [ $this, 'invalid_option_notices' ] );
 	}
@@ -123,7 +123,7 @@ class Admin extends AbstractController {
 	public function plugin_page_link( $links, $file ) {
 		if ( false !== strpos( $file, 'wp-gianism' ) ) {
 			foreach ( [
-				admin_url( 'options-general.php?page=gianism' ) => __( 'Settings', 'wp-gianism' ),
+				admin_url( 'options-general.php?page=gianism' ) => __( 'Settings', 'gianism' ),
 			] as $url => $label ) {
 				array_unshift( $links, sprintf( '<a href="%s">%s</a>', esc_url( $url ), esc_html( $label ) ) );
 			}
@@ -177,7 +177,7 @@ class Admin extends AbstractController {
 						]
 					)
 				),
-				__( 'Support', 'wp-gianism' )
+				__( 'Support', 'gianism' )
 			);
 			$plugin_meta[] = '<a href="https://github.com/fumikito/Gianism">Github</a>';
 		}

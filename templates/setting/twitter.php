@@ -9,67 +9,67 @@ defined( 'ABSPATH' ) or die();
 <table class="form-table">
 	<tbody>
 	<tr>
-		<th><label><?php printf( esc_html__( 'Connect with %s', 'wp-gianism' ), 'X' ); ?></label></th>
+		<th><label><?php printf( esc_html__( 'Connect with %s', 'gianism' ), 'X' ); ?></label></th>
 		<td>
 			<?php $this->switch_button( 'tw_enabled', $this->option->is_enabled( 'twitter' ) ); ?>
 			<label>
 			<p class="description">
 				<?php
 				// translators: %1$s is app name, %2$s is url.
-				printf( __( 'You have to create %1$s App <a target="_blank" href="%2$s">here</a> to get required information.', 'wp-gianism' ), 'X', 'https://developer.x.com/apps' );
+				printf( __( 'You have to create %1$s App <a target="_blank" href="%2$s">here</a> to get required information.', 'gianism' ), 'X', 'https://developer.x.com/apps' );
 				// translators: %1$s is url, %2$s is label.
-				printf( __( 'See detail at <a href="%1$s">%2$s</a>.', 'wp-gianism' ), $this->setting_url( 'setup' ), __( 'How to set up', 'wp-gianism' ) );
+				printf( __( 'See detail at <a href="%1$s">%2$s</a>.', 'gianism' ), $this->setting_url( 'setup' ), __( 'How to set up', 'gianism' ) );
 				?>
 			</p>
 		</td>
 	</tr>
 	<tr>
-		<th><label for="tw_screen_name"><?php _e( 'Screen Name', 'wp-gianism' ); ?></label></th>
+		<th><label for="tw_screen_name"><?php _e( 'Screen Name', 'gianism' ); ?></label></th>
 		<td><input class="regular-text" type="text" name="tw_screen_name" id="tw_screen_name"
 					value="<?php echo esc_attr( $instance->tw_screen_name ); ?>"/></td>
 	</tr>
 	<tr>
-		<th><label for="tw_consumer_key"><?php _e( 'Consumer Key', 'wp-gianism' ); ?></label></th>
+		<th><label for="tw_consumer_key"><?php _e( 'Consumer Key', 'gianism' ); ?></label></th>
 		<td><input class="regular-text" type="text" name="tw_consumer_key" id="tw_consumer_key"
 					value="<?php echo esc_attr( $instance->tw_consumer_key ); ?>"/></td>
 	</tr>
 	<tr>
-		<th><label for="tw_consumer_secret"><?php _e( 'Consumer Secret', 'wp-gianism' ); ?></label></th>
+		<th><label for="tw_consumer_secret"><?php _e( 'Consumer Secret', 'gianism' ); ?></label></th>
 		<td><input class="regular-text" type="text" name="tw_consumer_secret" id="tw_consumer_secret"
 					value="<?php echo esc_attr( $instance->tw_consumer_secret ); ?>"/></td>
 	</tr>
 	<tr>
-		<th><label for="tw_access_token"><?php _e( 'Access Token', 'wp-gianism' ); ?></label></th>
+		<th><label for="tw_access_token"><?php _e( 'Access Token', 'gianism' ); ?></label></th>
 		<td><input class="regular-text" type="text" name="tw_access_token" id="tw_access_token"
 					value="<?php echo esc_attr( $instance->tw_access_token ); ?>"/></td>
 	</tr>
 	<tr>
-		<th><label for="tw_access_token_secret"><?php _e( 'Access token secret', 'wp-gianism' ); ?></label></th>
+		<th><label for="tw_access_token_secret"><?php _e( 'Access token secret', 'gianism' ); ?></label></th>
 		<td><input class="regular-text" type="text" name="tw_access_token_secret" id="tw_access_token_secret"
 					value="<?php echo esc_attr( $instance->tw_access_token_secret ); ?>"/></td>
 	</tr>
 	<tr>
-		<th><label for="ggl_redirect_uri"><?php _e( 'Redirect URI', 'wp-gianism' ); ?></label></th>
+		<th><label for="ggl_redirect_uri"><?php _e( 'Redirect URI', 'gianism' ); ?></label></th>
 		<td>
 			<p class="description">
 				<?php
 				$end_point = esc_url( $instance->get_redirect_endpoint() );
 				printf(
 					// translators: %1$s is label, %2$s is url, %3$s is label, %4$s is url.
-					__( 'Please set %1$s to %2$s on <a target="_blank" href="%4$s">%3$s</a>.', 'wp-gianism' ),
-					__( 'Callback URL', 'wp-gianism' ),
+					__( 'Please set %1$s to %2$s on <a target="_blank" href="%4$s">%3$s</a>.', 'gianism' ),
+					__( 'Callback URL', 'gianism' ),
 					'<code>' . $end_point . '</code>',
 					'X Developers',
 					'https://developer.x.com/'
 				);
 				?>
 				<a class="button" href="<?php echo esc_attr( $end_point ); ?>"
-					onclick="window.prompt('<?php _e( 'Please copy this URL.', 'wp-gianism' ); ?>', this.href); return false;"><?php _e( 'Copy', 'wp-gianism' ); ?></a>
+					onclick="window.prompt('<?php _e( 'Please copy this URL.', 'gianism' ); ?>', this.href); return false;"><?php _e( 'Copy', 'gianism' ); ?></a>
 			</p>
 		</td>
 	</tr>
 	<tr>
-		<th><label><?php esc_html_e( 'X bot by Gianism', 'wp-gianism' ); ?></label></th>
+		<th><label><?php esc_html_e( 'X bot by Gianism', 'gianism' ); ?></label></th>
 		<td>
 			<?php $this->switch_button( 'tw_use_cron', $instance->tw_use_cron ); ?>
 			<p class="description">
@@ -77,12 +77,12 @@ defined( 'ABSPATH' ) or die();
 				<?php
 				printf(
 					// translators: %1$s, %2$s, %3$s, %4$s, %5$s are all nouns.
-					__( 'If enabled, you can make X bot which post at the time you specified. %1$s, %2$s, %3$s, %4$s, and %5$s are required.', 'wp-gianism' ),
-					__( 'Screen Name', 'wp-gianism' ),
-					__( 'Consumer Key', 'wp-gianism' ),
-					__( 'Consumer Secret', 'wp-gianism' ),
-					__( 'Access Token', 'wp-gianism' ),
-					__( 'Access token secret', 'wp-gianism' )
+					__( 'If enabled, you can make X bot which post at the time you specified. %1$s, %2$s, %3$s, %4$s, and %5$s are required.', 'gianism' ),
+					__( 'Screen Name', 'gianism' ),
+					__( 'Consumer Key', 'gianism' ),
+					__( 'Consumer Secret', 'gianism' ),
+					__( 'Access Token', 'gianism' ),
+					__( 'Access token secret', 'gianism' )
 				)
 				?>
 			</p>

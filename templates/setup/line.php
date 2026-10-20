@@ -9,38 +9,38 @@ defined( 'ABSPATH' ) or die();
 
 <h3>LINE</h3>
 
-<h4>Step1. <?php esc_html_e( 'Create new channel', 'wp-gianism' ); ?></h4>
+<h4>Step1. <?php esc_html_e( 'Create new channel', 'gianism' ); ?></h4>
 
-<p><?php esc_html_e( 'If you don\'t have LINE account, create new one.', 'wp-gianism' ); ?></p>
+<p><?php esc_html_e( 'If you don\'t have LINE account, create new one.', 'gianism' ); ?></p>
 <p>
 	<?php
 	// translators: %s is URL of LINE developer site.
-	printf( __( 'Go to <a href="%s">LINE developer</a> and click <code>Start LINE login</code>.', 'wp-gianism' ), 'https://developers.line.biz/' );
+	printf( __( 'Go to <a href="%s">LINE developer</a> and click <code>Start LINE login</code>.', 'gianism' ), 'https://developers.line.biz/' );
 	?>
 </p>
-<p><?php esc_html_e( 'Then register new client. Enter required information.', 'wp-gianism' ); ?></p>
+<p><?php esc_html_e( 'Then register new client. Enter required information.', 'gianism' ); ?></p>
 
 <table class="gianism-example-table">
 	<tr>
-		<th><?php esc_html_e( 'Provider Name', 'wp-gianism' ); ?></th>
+		<th><?php esc_html_e( 'Provider Name', 'gianism' ); ?></th>
 		<td>
 			<?php
 			// translators: %s is site name.
-			printf( __( 'Your service or company name. e.g. <code>%s</code>', 'wp-gianism' ), esc_html( get_bloginfo( 'name' ) ) );
+			printf( __( 'Your service or company name. e.g. <code>%s</code>', 'gianism' ), esc_html( get_bloginfo( 'name' ) ) );
 			?>
 		</td>
 	</tr>
 	<tr>
-		<th><?php esc_html_e( 'Application Name', 'wp-gianism' ); ?></th>
+		<th><?php esc_html_e( 'Application Name', 'gianism' ); ?></th>
 		<td>
 			<?php
 			// translators: %s is site name.
-			printf( __( 'Your application name. Site name <code>%s</code> is clear for your user.', 'wp-gianism' ), esc_html( get_bloginfo( 'name' ) ) );
+			printf( __( 'Your application name. Site name <code>%s</code> is clear for your user.', 'gianism' ), esc_html( get_bloginfo( 'name' ) ) );
 			?>
 		</td>
 	</tr>
 	<tr>
-		<th><?php esc_html_e( 'Redirect URI', 'wp-gianism' ); ?></th>
+		<th><?php esc_html_e( 'Redirect URI', 'gianism' ); ?></th>
 		<td>
 			<code>
 				<?php
@@ -51,6 +51,6 @@ defined( 'ABSPATH' ) or die();
 	</tr>
 </table>
 
-<h4>Step2. <?php _e( 'Enter API Information', 'wp-gianism' ); ?></h4>
+<h4>Step2. <?php _e( 'Enter API Information', 'gianism' ); ?></h4>
 
-<p><?php printf( __( 'Save credentials on <a href="%s">WordPress admin screen</a>.', 'wp-gianism' ), $this->setting_url() ); ?></p>
+<p><?php printf( __( 'Save credentials on <a href="%s">WordPress admin screen</a>.', 'gianism' ), $this->setting_url() ); ?></p>

@@ -82,7 +82,7 @@ class Analytics extends PluginBase {
 	 * @return string
 	 */
 	public function plugin_description() {
-		return __( 'Interact with Google Analytics data.', 'wp-gianism' );
+		return __( 'Interact with Google Analytics data.', 'gianism' );
 	}
 
 	/**
@@ -107,7 +107,7 @@ class Analytics extends PluginBase {
 			'gianism_setting_screen_views',
 			function ( $views, $slug ) {
 				if ( 'gianism' === $slug ) {
-					$views['analytics'] = sprintf( '<i class="lsf lsf-graph"></i> %s', __( 'Google Analytics', 'wp-gianism' ) );
+					$views['analytics'] = sprintf( '<i class="lsf lsf-graph"></i> %s', __( 'Google Analytics', 'gianism' ) );
 				}
 				return $views;
 			},
@@ -133,7 +133,7 @@ class Analytics extends PluginBase {
 				try {
 					if ( $this->input->get( 'delete' ) ) {
 						$this->save_token( '', true );
-						$this->add_message( __( 'Token deleted.', 'wp-gianism' ) );
+						$this->add_message( __( 'Token deleted.', 'gianism' ) );
 						wp_redirect( $redirect_to );
 						exit;
 					} else {
@@ -158,12 +158,12 @@ class Analytics extends PluginBase {
 						$token = $this->ga_client->getAccessToken();
 						$this->save_token( $this->ga_client->getAccessToken() );
 						// Add message
-						$this->add_message( __( 'Now you got token!', 'wp-gianism' ) );
+						$this->add_message( __( 'Now you got token!', 'gianism' ) );
 						// Redirect
 						wp_redirect( $args['redirect_to'] );
 						exit;
 					} else {
-						throw new \Exception( __( 'Failed to authenticate with Google API.', 'wp-gianism' ) );
+						throw new \Exception( __( 'Failed to authenticate with Google API.', 'gianism' ) );
 					}
 				} catch ( \Exception $e ) {
 					$this->input->wp_die( $e->getMessage() );
@@ -172,7 +172,7 @@ class Analytics extends PluginBase {
 			case 'save-analytics':
 				try {
 					if ( ! current_user_can( 'manage_options' ) ) {
-						throw new \Exception( __( 'You have no permission.', 'wp-gianism' ), 403 );
+						throw new \Exception( __( 'You have no permission.', 'gianism' ), 403 );
 					}
 					if ( update_option(
 						'wpg_analytics_profile',
@@ -182,11 +182,11 @@ class Analytics extends PluginBase {
 							'view'    => $this->input->post( 'ga-view' ),
 						)
 					) ) {
-						$this->add_message( __( 'Options updated.', 'wp-gianism' ) );
+						$this->add_message( __( 'Options updated.', 'gianism' ) );
 						wp_redirect( $this->input->post( 'redirect_to' ) );
 						exit;
 					} else {
-						throw new \Exception( __( 'Nothing changed.', 'wp-gianism' ), 500 );
+						throw new \Exception( __( 'Nothing changed.', 'gianism' ), 500 );
 					}
 				} catch ( \Exception $e ) {
 					$this->add_message( $e->getMessage(), true );
@@ -197,10 +197,10 @@ class Analytics extends PluginBase {
 			case 'create-table':
 				try {
 					if ( ! current_user_can( 'manage_options' ) ) {
-						throw new \Exception( __( 'You have no permission.', 'wp-gianism' ), 403 );
+						throw new \Exception( __( 'You have no permission.', 'gianism' ), 403 );
 					}
 					if ( $this->table_exists() ) {
-						throw new \Exception( __( 'Table is already exists.', 'wp-gianism' ), 500 );
+						throw new \Exception( __( 'Table is already exists.', 'gianism' ), 500 );
 					}
 					// O.K. Let's create table
 					$query = <<<SQL
@@ -221,9 +221,9 @@ SQL;
 					}
 					dbDelta( $query );
 					if ( ! $this->table_exists() ) {
-						throw new \Exception( __( 'Sorry, but failed to create table.', 'wp-gianism' ), 500 );
+						throw new \Exception( __( 'Sorry, but failed to create table.', 'gianism' ), 500 );
 					}
-					$this->add_message( __( 'Table created.', 'wp-gianism' ) );
+					$this->add_message( __( 'Table created.', 'gianism' ) );
 					wp_redirect( $this->input->get( 'redirect_to' ) );
 					exit;
 				} catch ( \Exception $e ) {
@@ -352,7 +352,7 @@ SQL;
 		try {
 			// Check nonce
 			if ( ! wp_verify_nonce( $this->input->get( 'nonce' ), self::AJAX_ACTION ) || ! current_user_can( 'manage_options' ) ) {
-				throw new \Exception( __( 'You have no permission.', 'wp-gianism' ), 403 );
+				throw new \Exception( __( 'You have no permission.', 'gianism' ), 403 );
 			}
 			// Check data to retrieve
 			$result = null;
@@ -376,7 +376,7 @@ SQL;
 					);
 					break;
 				default:
-					throw new \Exception( __( 'Invalid action.', 'wp-gianism' ), 500 );
+					throw new \Exception( __( 'Invalid action.', 'gianism' ), 500 );
 			}
 		} catch ( \Exception $e ) {
 			$json = array(
@@ -466,10 +466,10 @@ SQL;
 		header( 'Content-Type', 'application/json' );
 		try {
 			if ( ! current_user_can( 'manage_options' ) ) {
-				throw new \Exception( __( 'You have no permission.', 'wp-gianism' ), 403 );
+				throw new \Exception( __( 'You have no permission.', 'gianism' ), 403 );
 			}
 			if ( ! wp_verify_nonce( $this->input->post( '_wpnonce' ), self::AJAX_CRON ) || ! isset( $this->crons[ $this->input->post( 'cron' ) ] ) ) {
-				throw new \Exception( __( 'Such action does not exist.', 'wp-gianism' ), 403 );
+				throw new \Exception( __( 'Such action does not exist.', 'gianism' ), 403 );
 			}
 			$class_name = $this->crons[ $this->input->post( 'cron' ) ];
 			/** @var \Gianism\Cron\Daily $instance */

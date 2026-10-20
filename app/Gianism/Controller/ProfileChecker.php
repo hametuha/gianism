@@ -153,10 +153,10 @@ class ProfileChecker extends AbstractController {
 			$error = new \WP_Error();
 			$user  = get_userdata( $user_id );
 			if ( $this->is_password_unknown( $user->ID ) ) {
-				$error->add( 'password_unknown', __( 'Your password is automatically generated. Please change it to your own.', 'wp-gianism' ) );
+				$error->add( 'password_unknown', __( 'Your password is automatically generated. Please change it to your own.', 'gianism' ) );
 			}
 			if ( $this->is_pseudo_mail( $user->user_email ) ) {
-				$error->add( 'email', __( 'Your email is pseudo one because your SNS has no permission to provide email to us. ', 'wp-gianism' ) );
+				$error->add( 'email', __( 'Your email is pseudo one because your SNS has no permission to provide email to us. ', 'gianism' ) );
 			}
 			$error = apply_filters( 'gianism_profile_error', $error, $user );
 		}
@@ -197,7 +197,7 @@ class ProfileChecker extends AbstractController {
 			return;
 		}
 		// translators: %s is URL
-		$message = sprintf( __( 'You have an incomplete profile. To access full features of this site, please fill your profile <a href="%s">here</a>.', 'wp-gianism' ), $this->redirect_url() );
+		$message = sprintf( __( 'You have an incomplete profile. To access full features of this site, please fill your profile <a href="%s">here</a>.', 'gianism' ), $this->redirect_url() );
 		$message = apply_filters( 'gianism_profile_error_popup', $message, $this->redirect_url(), $error );
 		$this->add_message( $message, true );
 	}

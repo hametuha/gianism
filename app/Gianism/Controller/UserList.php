@@ -30,7 +30,7 @@ class UserList extends AbstractController {
 		$new_columns = [];
 		foreach ( $columns as $key => $label ) {
 			if ( 'posts' === $key ) {
-				$new_columns['gianism'] = __( 'SNS', 'wp-gianism' );
+				$new_columns['gianism'] = __( 'SNS', 'gianism' );
 			}
 			$new_columns[ $key ] = $label;
 		}
@@ -61,7 +61,7 @@ class UserList extends AbstractController {
 							esc_attr( $service['name'] ),
 							sprintf(
 								// translators: %s is service name
-								esc_attr__( 'Connected with %s', 'wp-gianism' ),
+								esc_attr__( 'Connected with %s', 'gianism' ),
 								esc_attr( $controller->verbose_service_name )
 							)
 						);

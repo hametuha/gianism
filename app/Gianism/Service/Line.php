@@ -140,7 +140,7 @@ class Line extends NoMailService {
 			throw new \Exception( $msg, 500 );
 		}
 		if ( $state !== $saved ) {
-			throw new \Exception( __( 'Sorry, but wrong access. Please try again.', 'wp-gianism' ), 500 );
+			throw new \Exception( __( 'Sorry, but wrong access. Please try again.', 'gianism' ), 500 );
 		}
 		$data   = [
 			'grant_type'    => 'authorization_code',
@@ -169,7 +169,7 @@ class Line extends NoMailService {
 					isset( $json->error_description ) ? $json->error_description : substr( (string) $result['body'], 0, 200 )
 				)
 			);
-			throw new \Exception( __( 'Sorry, but failed to parse request.', 'wp-gianism' ), 500 );
+			throw new \Exception( __( 'Sorry, but failed to parse request.', 'gianism' ), 500 );
 		}
 		JWT::$leeway    = 5;
 		$jwt            = JWT::decode( $json->id_token, new Key( $this->line_channel_secret, 'HS256' ) );
@@ -177,7 +177,7 @@ class Line extends NoMailService {
 		// Verify nonce to prevent replay attack.
 		$saved_nonce = (string) $this->session->get( 'line_nonce' );
 		if ( ! $saved_nonce || ! isset( $jwt->nonce ) || ! hash_equals( $saved_nonce, (string) $jwt->nonce ) ) {
-			throw new \Exception( __( 'Sorry, but wrong access. Please try again.', 'wp-gianism' ), 500 );
+			throw new \Exception( __( 'Sorry, but wrong access. Please try again.', 'gianism' ), 500 );
 		}
 		return $json;
 	}
@@ -309,7 +309,7 @@ class Line extends NoMailService {
 					]
 				);
 				// translators: %1$s is URL, %2$s is a site name.
-				$this->input->wp_die( sprintf( __( 'Sorry, but wrong access. Please go back to <a href="%1$s">%2$s</a>.', 'wp-gianism' ), esc_url( home_url( '/' ) ), get_bloginfo( 'name' ) ), 500, false );
+				$this->input->wp_die( sprintf( __( 'Sorry, but wrong access. Please go back to <a href="%1$s">%2$s</a>.', 'gianism' ), esc_url( home_url( '/' ) ), get_bloginfo( 'name' ) ), 500, false );
 				break;
 		}
 	}

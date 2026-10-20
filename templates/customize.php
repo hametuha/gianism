@@ -6,13 +6,13 @@ defined( 'ABSPATH' ) or die();
 ?>
 
 
-<h3><?php _e( 'Change Login Button', 'wp-gianism' ); ?></h3>
+<h3><?php _e( 'Change Login Button', 'gianism' ); ?></h3>
 <p class="description">
-	<?php _e( 'You can change the appearance of login button.', 'wp-gianism' ); ?>
+	<?php _e( 'You can change the appearance of login button.', 'gianism' ); ?>
 </p>
 <pre class="brush: php">
 /**
- * <?php _e( 'You can customize Facebook login button like this', 'wp-gianism' ); ?>
+ * <?php _e( 'You can customize Facebook login button like this', 'gianism' ); ?>
 
  * @param string  $markup
  * @param string  $link
@@ -27,10 +27,10 @@ function _my_login_link_facebook($markup, $link, $title, $is_register, $service)
 add_filter('gianism_link_html', '_my_login_link_facebook', 10, 5);
 </pre>
 
-<h3><?php _e( 'Change Redirect', 'wp-gianism' ); ?></h3>
+<h3><?php _e( 'Change Redirect', 'gianism' ); ?></h3>
 
 <p class="description">
-	<?php _e( 'You can hook on redirect URL after user logged in.', 'wp-gianism' ); ?>
+	<?php _e( 'You can hook on redirect URL after user logged in.', 'gianism' ); ?>
 </p>
 
 <pre class="brush: php">
@@ -42,9 +42,9 @@ add_filter('gianism_link_html', '_my_login_link_facebook', 10, 5);
  * @return string URL string to redirect to. Null is no-redirect.
  */
 function _my_redirect_to($url, $service, $context){
-	//<?php _e( 'Now you can get redirect URL.', 'wp-gianism' ); ?>
+	//<?php _e( 'Now you can get redirect URL.', 'gianism' ); ?>
 
-	//<?php _e( 'Not specified, $url is null.', 'wp-gianism' ); ?>
+	//<?php _e( 'Not specified, $url is null.', 'gianism' ); ?>
 
 	return home_url();
 }
@@ -53,13 +53,13 @@ add_filter('gianism_redirect_to', '_my_redirect_to', 10, 3);
 </pre>
 
 <p class="notice">
-	<?php _e( '<strong>Note:</strong> Redirect occurs on various situations. If you are not enough aware of WordPress URL process, some troubles might occurs.', 'wp-gianism' ); ?>
+	<?php _e( '<strong>Note:</strong> Redirect occurs on various situations. If you are not enough aware of WordPress URL process, some troubles might occurs.', 'gianism' ); ?>
 </p>
 
 
-<h3><?php _e( 'Control login button display', 'wp-gianism' ); ?></h3>
+<h3><?php _e( 'Control login button display', 'gianism' ); ?></h3>
 <p class="description">
-	<?php _e( 'By default, all login buttons of each services are displayed on both login screen and register screen. You can turn it off on admin screen. Besides it, you can controll it with filter hook.', 'wp-gianism' ); ?>
+	<?php _e( 'By default, all login buttons of each services are displayed on both login screen and register screen. You can turn it off on admin screen. Besides it, you can controll it with filter hook.', 'gianism' ); ?>
 </p>
 
 <pre class="brush: php">
@@ -96,16 +96,16 @@ echo esc_html( $code );
 </pre>
 
 
-<h3><?php _e( 'Display login button as you like', 'wp-gianism' ); ?></h3>
+<h3><?php _e( 'Display login button as you like', 'gianism' ); ?></h3>
 <p class="description">
-	<?php _e( 'You can display social login buttons anywhere.', 'wp-gianism' ); ?>
+	<?php _e( 'You can display social login buttons anywhere.', 'gianism' ); ?>
 </p>
 <p>
-	<?php _e( 'Gianism displays social login button on login screen. But you may want to display in other situations.', 'wp-gianism' ); ?>
+	<?php _e( 'Gianism displays social login button on login screen. But you may want to display in other situations.', 'gianism' ); ?>
 	<br/>
-	<?php _e( 'For example, you have some SNS oriented site and want to hide WordPress\'s login screen and want your user to log in only through social login buttons.', 'wp-gianism' ); ?>
+	<?php _e( 'For example, you have some SNS oriented site and want to hide WordPress\'s login screen and want your user to log in only through social login buttons.', 'gianism' ); ?>
 	<br/>
-	<?php _e( 'In this case, you can display social login buttons wherever you like. The &quot;if&quot; statement is not necessary if you are brave.', 'wp-gianism' ); ?>
+	<?php _e( 'In this case, you can display social login buttons wherever you like. The &quot;if&quot; statement is not necessary if you are brave.', 'gianism' ); ?>
 	<br/>
 </p>
 <pre class="brush: php">
@@ -120,7 +120,7 @@ echo esc_html( $code );
 </pre>
 
 <p>
-	<?php _e( 'Further more, you might think your user should be redirect to your single page. In this case, you can specify redirect URL.', 'wp-gianism' ); ?>
+	<?php _e( 'Further more, you might think your user should be redirect to your single page. In this case, you can specify redirect URL.', 'gianism' ); ?>
 	<br/>
 </p>
 
@@ -134,14 +134,14 @@ echo esc_html( $code );
 </pre>
 
 <p>
-	<?php _e( 'First argument is starting tag(e.g. &lt;div id="some-id"&gt;). Second argument is closing tag(e.g. &lt;/div&gt;). And third argument is redirect URL where your user will be redirected after logging-in.', 'wp-gianism' ); ?>
+	<?php _e( 'First argument is starting tag(e.g. &lt;div id="some-id"&gt;). Second argument is closing tag(e.g. &lt;/div&gt;). And third argument is redirect URL where your user will be redirected after logging-in.', 'gianism' ); ?>
 </p>
 
-<h3><?php _e( 'Data Source', 'wp-gianism' ); ?></h3>
+<h3><?php _e( 'Data Source', 'gianism' ); ?></h3>
 <p>
 	<?php
 	printf(
-		__( 'For more detailed information, please visit our <a target="_blank" href="%s">support site</a>.', 'wp-gianism' ),
+		__( 'For more detailed information, please visit our <a target="_blank" href="%s">support site</a>.', 'gianism' ),
 		gianism_utm_link(
 			'https://gianism.info/',
 			[

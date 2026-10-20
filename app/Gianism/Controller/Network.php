@@ -121,7 +121,7 @@ class Network extends AbstractController {
 		}
 		try {
 			if ( current_user_can( 'manage_network' ) && ! $this->option->is_network_activated() ) {
-				throw new \Exception( __( 'Gianism provides network sites supports. Please consider network activation.', 'wp-gianism' ) );
+				throw new \Exception( __( 'Gianism provides network sites supports. Please consider network activation.', 'gianism' ) );
 			}
 		} catch ( \Exception $e ) {
 			printf( '<div class="notice notice-info is-dismissible"><p>%s</p></div>', wp_kses_post( $e->getMessage() ) );
