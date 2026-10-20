@@ -21,7 +21,7 @@ defined( 'ABSPATH' ) or die();
 			<p class="description">
 				<?php
 				// translators: %1$s is service name, %2$s is link to LINE developer page.
-				printf( __( 'You have to create %1$s App <a target="_blank" href="%2$s">here</a> to get required information.', 'wp-gianism' ), 'LINE', 'https://developers.line.me/' );
+				printf( __( 'You have to create %1$s App <a target="_blank" href="%2$s">here</a> to get required information.', 'wp-gianism' ), 'LINE', 'https://developers.line.biz/' );
 				// translators: %1$s is Link label, %2$s is link to the page.
 				printf( __( 'See detail at <a href="%1$s">%2$s</a>.', 'wp-gianism' ), $this->setting_url( 'setup' ), __( 'How to set up', 'wp-gianism' ) );
 				?>
@@ -54,7 +54,7 @@ defined( 'ABSPATH' ) or die();
 					__( 'Callback URL', 'wp-gianism' ),
 					'<code>' . $end_point . '</code>',
 					'LINE Developers',
-					'https://developers.line.me/console/'
+					'https://developers.line.biz/console/'
 				);
 				?>
 				<a class="button" href="<?php echo esc_attr( $end_point ); ?>"
@@ -69,7 +69,7 @@ defined( 'ABSPATH' ) or die();
 			<p class="description">
 				<?php
 				// translators: %1$s is link to LINE developer page.
-				printf( __( 'You need registration to retrieve user email. Go to <a target="_blank" href="%1$s">LINE developer</a> and submit request.', 'wp-gianism' ), 'https://developers.line.me/' );
+				printf( __( 'You need registration to retrieve user email. Go to <a target="_blank" href="%1$s">LINE developer</a> and submit request.', 'wp-gianism' ), 'https://developers.line.biz/' );
 				?>
 			</p>
 		</td>

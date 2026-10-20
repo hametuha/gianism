@@ -1939,12 +1939,14 @@ msgstr "新しいチャンネルを作成"
 msgid "If you don't have LINE account, create new one."
 msgstr "LINEアカウントをお持ちでない場合は新たに作成してください。"
 
-#: templates/setup/line.php:15
+#. translators: %s is URL of LINE developer site.
+#: templates/setup/line.php:18
+#, php-format
 msgid ""
-"Go to <a href=\"https://developers.line.me/\">LINE developer</a> and click "
+"Go to <a href=\"%s\">LINE developer</a> and click "
 "<code>Start LINE login</code>."
 msgstr ""
-"<a href=\"https://developers.line.me/\">LINE developer</a>へ移動し、"
+"<a href=\"%s\">LINE developer</a>へ移動し、"
 "<code>LINEログインをはじめる</code>をクリックしてください。"
 
 #: templates/setup/line.php:16
