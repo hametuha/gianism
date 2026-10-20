@@ -67,6 +67,45 @@ define( 'GIANISM_PHP_VERSION', $info['php_version'] );
 // Add action after plugins are loaded.
 add_action( 'plugins_loaded', 'gianism_setup_after_plugins_loaded', 11 );
 
+// Use bundled translation as per-string fallback of language packs.
+add_filter( 'override_load_textdomain', 'gianism_load_bundled_translation', 10, 4 );
+
+/**
+ * Load bundled translation after language pack.
+ *
+ * WordPress loads only one file per text domain, so a language pack hides
+ * the bundled translation entirely. Load both and let the language pack win
+ * (the first loaded file has priority), so strings missing in the pack still
+ * get translated.
+ *
+ * @ignore
+ * @param bool        $override Whether to override.
+ * @param string      $domain   Text domain.
+ * @param string      $mofile   Path to the file to load.
+ * @param string|null $locale   Locale.
+ * @return bool
+ */
+function gianism_load_bundled_translation( $override, $domain, $mofile, $locale = null ) {
+	static $loading = false;
+	if ( $override || $loading || 'gianism' !== $domain ) {
+		return $override;
+	}
+	$bundled_dir = wp_normalize_path( __DIR__ . '/language' );
+	if ( dirname( wp_normalize_path( $mofile ) ) === $bundled_dir ) {
+		// This is bundled file itself.
+		return $override;
+	}
+	$bundled = sprintf( '%s/gianism-%s.mo', $bundled_dir, $locale ? $locale : determine_locale() );
+	if ( ! is_readable( $bundled ) ) {
+		return $override;
+	}
+	$loading = true;
+	$loaded  = load_textdomain( $domain, $mofile, $locale );
+	$loaded  = load_textdomain( $domain, $bundled, $locale ) || $loaded;
+	$loading = false;
+	return $loaded;
+}
+
 /**
  * Start plugin
  *

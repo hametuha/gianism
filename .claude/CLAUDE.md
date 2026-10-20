@@ -109,7 +109,7 @@ composer fix    # 自動修正
 
 - テキストドメインは `gianism`（WordPress.org のスラッグと同じ）。翻訳関数は必ず `__( '...', 'gianism' )` などの標準関数を使う（`$this->_()` / `$this->e()` は非推奨）
 - 翻訳の正本は translate.wordpress.org（GlotPress）。WordPress.org の言語パックがあればそちらが優先される
-- `language/gianism-ja.po` / `.mo` は言語パックがない環境向けのフォールバック。文言を追加・変更したら更新する:
+- `language/gianism-ja.po` / `.mo` は同梱のフォールバック。言語パックがあっても、パックにない文言だけ同梱訳で補う（`wp-gianism.php` の `gianism_load_bundled_translation()`）。文言を追加・変更したら更新する:
 
 ```bash
 # POT 再生成（Docker の WP-CLI を使う）
