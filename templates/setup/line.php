@@ -12,7 +12,12 @@ defined( 'ABSPATH' ) or die();
 <h4>Step1. <?php esc_html_e( 'Create new channel', 'wp-gianism' ); ?></h4>
 
 <p><?php esc_html_e( 'If you don\'t have LINE account, create new one.', 'wp-gianism' ); ?></p>
-<p><?php _e( 'Go to <a href="https://developers.line.me/">LINE developer</a> and click <code>Start LINE login</code>.', 'wp-gianism' ); ?></p>
+<p>
+	<?php
+	// translators: %s is URL of LINE developer site.
+	printf( __( 'Go to <a href="%s">LINE developer</a> and click <code>Start LINE login</code>.', 'wp-gianism' ), 'https://developers.line.biz/' );
+	?>
+</p>
 <p><?php esc_html_e( 'Then register new client. Enter required information.', 'wp-gianism' ); ?></p>
 
 <table class="gianism-example-table">

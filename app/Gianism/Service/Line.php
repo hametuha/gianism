@@ -73,12 +73,15 @@ class Line extends NoMailService {
 					$state = sha1( uniqid() );
 				}
 				$this->session->write( 'line_state', $state );
+				$nonce = sha1( random_bytes( 24 ) );
+				$this->session->write( 'line_nonce', $nonce );
 				$params = [
 					'response_type' => 'code',
 					'client_id'     => $this->line_channel_id,
 					'redirect_uri'  => home_url( "/{$this->url_prefix}/" ),
 					'scope'         => rawurlencode( 'profile openid email' ),
 					'state'         => $state,
+					'nonce'         => $nonce,
 					// 'prompt' => 'consent', // For Debug by displaying consent screen always.
 				];
 				$prompt = $this->line_add_friend_prompt;
@@ -137,7 +140,7 @@ class Line extends NoMailService {
 			throw new \Exception( $msg, 500 );
 		}
 		if ( $state !== $saved ) {
-			throw new \Exception( __( 'Sorry, but wrong access. Please try again.', 'wpg-gianism' ), 500 );
+			throw new \Exception( __( 'Sorry, but wrong access. Please try again.', 'wp-gianism' ), 500 );
 		}
 		$data   = [
 			'grant_type'    => 'authorization_code',
@@ -157,11 +160,25 @@ class Line extends NoMailService {
 		}
 		$json = json_decode( $result['body'] );
 		if ( ! $json || ! isset( $json->id_token ) ) {
+			// Log LINE's error response for diagnosis. User sees generic message.
+			error_log(
+				sprintf(
+					'[Gianism LINE Error %d] %s: %s',
+					wp_remote_retrieve_response_code( $result ),
+					isset( $json->error ) ? $json->error : 'no_id_token',
+					isset( $json->error_description ) ? $json->error_description : substr( (string) $result['body'], 0, 200 )
+				)
+			);
 			throw new \Exception( __( 'Sorry, but failed to parse request.', 'wp-gianism' ), 500 );
 		}
 		JWT::$leeway    = 5;
 		$jwt            = JWT::decode( $json->id_token, new Key( $this->line_channel_secret, 'HS256' ) );
 		$json->id_token = $jwt;
+		// Verify nonce to prevent replay attack.
+		$saved_nonce = (string) $this->session->get( 'line_nonce' );
+		if ( ! $saved_nonce || ! isset( $jwt->nonce ) || ! hash_equals( $saved_nonce, (string) $jwt->nonce ) ) {
+			throw new \Exception( __( 'Sorry, but wrong access. Please try again.', 'wp-gianism' ), 500 );
+		}
 		return $json;
 	}
 
