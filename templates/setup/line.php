@@ -51,6 +51,6 @@ defined( 'ABSPATH' ) or die();
 	</tr>
 </table>
 
-<h4>Step2. <?php $this->e( 'Enter API Information' ); ?></h4>
+<h4>Step2. <?php _e( 'Enter API Information', 'wp-gianism' ); ?></h4>
 
-<p><?php printf( $this->_( 'Save credentials on <a href="%s">WordPress admin screen</a>.' ), $this->setting_url() ); ?></p>
+<p><?php printf( __( 'Save credentials on <a href="%s">WordPress admin screen</a>.', 'wp-gianism' ), $this->setting_url() ); ?></p>

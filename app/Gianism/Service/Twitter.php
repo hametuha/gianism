@@ -128,7 +128,7 @@ class Twitter extends NoMailService {
 				function () {
 					printf(
 						'<div class="error"><p>%s</p></div>',
-						sprintf( $this->_( 'Twitter Login requires PHP5.5 and over but yours is %s. Every twitter login will be failed.' ), phpversion() )
+						sprintf( __( 'Twitter Login requires PHP5.5 and over but yours is %s. Every twitter login will be failed.', 'wp-gianism' ), phpversion() )
 					);
 				}
 			);
@@ -250,7 +250,7 @@ class Twitter extends NoMailService {
 				try {
 					// Is user logged in?
 					if ( ! is_user_logged_in() ) {
-						throw new \Exception( $this->_( 'You must be logged in.' ) );
+						throw new \Exception( __( 'You must be logged in.', 'wp-gianism' ) );
 					}
 					// Get information from twitter.
 					if ( ! ( $verifier ) || ! $this->validate_token( $token ) ) {
@@ -298,7 +298,7 @@ class Twitter extends NoMailService {
 						'redirect_to' => $redirect_url,
 					]
 				);
-				$this->input->wp_die( sprintf( $this->_( 'Sorry, but wrong access. Please go back to <a href="%s">%s</a>.' ), home_url( '/' ), get_bloginfo( 'name' ) ), 500, false );
+				$this->input->wp_die( sprintf( __( 'Sorry, but wrong access. Please go back to <a href="%1$s">%2$s</a>.', 'wp-gianism' ), home_url( '/' ), get_bloginfo( 'name' ) ), 500, false );
 				break;
 		}
 	}

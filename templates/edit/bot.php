@@ -9,23 +9,23 @@ $twitter = \Gianism\Service\Twitter::get_instance();
 
 	<div class="form-row">
 		<label for="content"><i
-				class="lsf lsf-balloon"></i> <?php printf( $this->_( 'What do you tweet as <a href="https://twitter.com/%1$s" target="_blank">@%1$s</a>?' ), $twitter->tw_screen_name ); ?>
+				class="lsf lsf-balloon"></i> <?php printf( __( 'What do you tweet as <a href="https://twitter.com/%1$s" target="_blank">@%1$s</a>?', 'wp-gianism' ), $twitter->tw_screen_name ); ?>
 		</label>
 		<textarea id="content" name="content"
-					placeholder="<?php echo esc_attr( $this->_( 'Enter your tweet.' ) ); ?>"><?php echo esc_textarea( $post->post_content ); ?></textarea>
+					placeholder="<?php echo esc_attr( __( 'Enter your tweet.', 'wp-gianism' ) ); ?>"><?php echo esc_textarea( $post->post_content ); ?></textarea>
 		<p class="description">
-			<?php $this->e( 'HTML tags are not allowed. But you can use short codes. Gianism original short codes are below.' ); ?>
-			<?php printf( $this->_( 'And ofcourse You can register your own shortcode with <a href="%s">Shortcode API</a>.' ), 'http://codex.wordpress.org/Shortcode_API' ); ?>
+			<?php _e( 'HTML tags are not allowed. But you can use short codes. Gianism original short codes are below.', 'wp-gianism' ); ?>
+			<?php printf( __( 'And ofcourse You can register your own shortcode with <a href="%s">Shortcode API</a>.', 'wp-gianism' ), 'http://codex.wordpress.org/Shortcode_API' ); ?>
 		</p>
 		<hr/>
 		<h4>gianism_limit</h4>
 		<p>
-			<em><?php $this->e( 'Attributes' ); ?></em>:
+			<em><?php _e( 'Attributes', 'wp-gianism' ); ?></em>:
 			<code>limit</code>
-			<small><?php $this->e( 'Date time. This will convert to rest time which is relative to current time.' ); ?>
+			<small><?php _e( 'Date time. This will convert to rest time which is relative to current time.', 'wp-gianism' ); ?>
 				|
 				<code>placeholder</code>
-				<small><?php printf( $this->_( 'Place holder. Default is %s.' ), $this->_( '%s left' ) ); ?></small>
+				<small><?php printf( __( 'Place holder. Default is %s.', 'wp-gianism' ), __( '%s left', 'wp-gianism' ) ); ?></small>
 		</p>
 		<?php
 		$next_month = date_i18n( 'Y-m-d', strtotime( 'Next month' ) );
@@ -48,7 +48,7 @@ $twitter = \Gianism\Service\Twitter::get_instance();
 
 	<div class="form-row">
 		<table class="date-table" id="gianism-bot-schedule">
-			<caption><i class="lsf lsf-time"></i> <?php $this->e( 'Schedule' ); ?></caption>
+			<caption><i class="lsf lsf-time"></i> <?php _e( 'Schedule', 'wp-gianism' ); ?></caption>
 			<thead>
 			<tr>
 				<th>&nbsp;</th>
@@ -72,7 +72,7 @@ $twitter = \Gianism\Service\Twitter::get_instance();
 							<option><?php printf( '%02d', $i * 10 ); ?></option>
 						<?php endfor; ?>
 					</select>
-					<a class="button add-row" href="#"><?php $this->e( 'Add Time Row' ); ?></a>
+					<a class="button add-row" href="#"><?php _e( 'Add Time Row', 'wp-gianism' ); ?></a>
 				</td>
 			</tr>
 			</tfoot>
@@ -102,20 +102,20 @@ $twitter = \Gianism\Service\Twitter::get_instance();
 	if ( ! empty( $limit ) && ! preg_match( '/[0-9]{4}-[0-9]{2}-[0-9]{2}/u', $limit ) ) :
 		?>
 		<div class="error">
-			<p><?php $this->e( 'End datetime is mal-formed: YYYY-MM-DD' ); ?></p>
+			<p><?php _e( 'End datetime is mal-formed: YYYY-MM-DD', 'wp-gianism' ); ?></p>
 		</div>
 	<?php endif; ?>
 
 	<hr/>
 
 	<div class="form-row">
-		<label for="tweet_ends"><i class="lsf lsf-dailycalendar"></i> <?php $this->e( 'End Datetime' ); ?></label>
+		<label for="tweet_ends"><i class="lsf lsf-dailycalendar"></i> <?php _e( 'End Datetime', 'wp-gianism' ); ?></label>
 		<p>
 			<input type="date" class="regular-text" name="tweet_ends" id="tweet_ends"
 					value="<?php echo esc_html( $limit ); ?>" placeholder="ex. 2014-08-16" autocomplete="on">
 		</p>
 		<p class="description">
-			<?php $this->e( 'Passing this limit, This bot will be private. Format is YYYY-MM-DD' ); ?>
+			<?php _e( 'Passing this limit, This bot will be private. Format is YYYY-MM-DD', 'wp-gianism' ); ?>
 		</p>
 	</div>
 

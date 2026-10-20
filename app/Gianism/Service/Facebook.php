@@ -141,7 +141,7 @@ class Facebook extends NoMailService {
 				'gianism_setting_screen_views',
 				function ( $views, $slug ) {
 					if ( 'gianism' === $slug ) {
-						$views['fb-api'] = sprintf( '<i class="lsf lsf-facebook"></i> %s', $this->_( 'Facebook API' ) );
+						$views['fb-api'] = sprintf( '<i class="lsf lsf-facebook"></i> %s', __( 'Facebook API', 'wp-gianism' ) );
 					}
 					return $views;
 				},
@@ -271,7 +271,7 @@ class Facebook extends NoMailService {
 				try {
 					// Is logged in?
 					if ( is_user_logged_in() ) {
-						throw new \Exception( $this->_( 'You are already logged in' ) );
+						throw new \Exception( __( 'You are already logged in', 'wp-gianism' ) );
 					}
 					// Get user ID
 					$user = $this->get_returned_user();
@@ -409,7 +409,7 @@ class Facebook extends NoMailService {
 					update_option( 'gianism_facebook_admin_token', $long_token );
 					// phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
 					update_option( 'gianism_facebook_admin_refreshed', current_time( 'timestamp' ) );
-					$this->add_message( $this->_( 'Access token is saved.' ) );
+					$this->add_message( __( 'Access token is saved.', 'wp-gianism' ) );
 				} catch ( \Exception $e ) {
 					$this->add_message( $e->getMessage(), true );
 				}
@@ -433,7 +433,7 @@ class Facebook extends NoMailService {
 						'redirect_to' => $redirect_url,
 					]
 				);
-				$this->input->wp_die( sprintf( $this->_( 'Sorry, but wrong access. Please go back to <a href="%s">%s</a>.' ), home_url( '/' ), get_bloginfo( 'name' ) ), 500, false );
+				$this->input->wp_die( sprintf( __( 'Sorry, but wrong access. Please go back to <a href="%1$s">%2$s</a>.', 'wp-gianism' ), home_url( '/' ), get_bloginfo( 'name' ) ), 500, false );
 				break;
 		}
 	}
@@ -485,7 +485,7 @@ class Facebook extends NoMailService {
 	public function update_facebook_admin() {
 		if ( current_user_can( 'manage_options' ) && 'gianism' === $this->input->get( 'page' ) && wp_verify_nonce( $this->input->post( '_wpnonce' ), 'gianism_fb_account' ) ) {
 			update_option( 'gianism_facebook_admin_id', sanitize_text_field( $this->input->post( 'fb_account_id' ) ) );
-			$this->add_message( $this->_( 'Saved facebook account to use.' ) );
+			$this->add_message( __( 'Saved facebook account to use.', 'wp-gianism' ) );
 			wp_redirect( admin_url( 'options-general.php?page=gianism&view=fb-api' ) );
 			exit;
 		}
@@ -505,7 +505,7 @@ class Facebook extends NoMailService {
 		}
 		$user = $this->get_user_profile( 'login', $access_token );
 		if ( ! $user ) {
-			throw new \Exception( $this->_( 'Sorry, but failed to get user data.' ), 500 );
+			throw new \Exception( __( 'Sorry, but failed to get user data.', 'wp-gianism' ), 500 );
 		}
 		return $user;
 	}
@@ -699,7 +699,7 @@ class Facebook extends NoMailService {
 				if ( is_null( $this->_admin_api ) ) {
 					$token = $this->option->get( 'gianism_facebook_admin_token', false );
 					if ( ! $this->fb_use_api || ! $token ) {
-						return new \WP_Error( 404, $this->_( 'Token is not set. Please get it.' ) );
+						return new \WP_Error( 404, __( 'Token is not set. Please get it.', 'wp-gianism' ) );
 					}
 					try {
 						$this->_admin_api = $this->get_facebook_client();
@@ -707,7 +707,7 @@ class Facebook extends NoMailService {
 						$updated = $this->option->get( 'gianism_facebook_admin_refreshed', 0 );
 						// phpcs:ignore WordPress.DateTime.CurrentTimeTimestamp.Requested
 						if ( ! $updated || current_time( 'timestamp' ) > $updated + ( 60 * 60 * 24 * 60 ) ) {
-							return new \WP_Error( 410, $this->_( 'Token is outdated. Please update it.' ) );
+							return new \WP_Error( 410, __( 'Token is outdated. Please update it.', 'wp-gianism' ) );
 						}
 						$this->_admin_api->setDefaultAccessToken( $token );
 					} catch ( \Exception $e ) {

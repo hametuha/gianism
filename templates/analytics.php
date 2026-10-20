@@ -9,7 +9,7 @@ $google = $this->service->get( 'google' );
 if ( ! $google->enabled ) :
 	?>
 	<div class="error">
-		<p><?php printf( $this->_( 'Google connect is not available. Go to <a href="%s">setting page</a> and turn it on.' ), admin_url( 'options-general.php?page=gianism' ) ); ?></p>
+		<p><?php printf( __( 'Google connect is not available. Go to <a href="%s">setting page</a> and turn it on.', 'wp-gianism' ), admin_url( 'options-general.php?page=gianism' ) ); ?></p>
 	</div>
 	<?php
 	return;
@@ -19,22 +19,22 @@ $analytics = \Gianism\Plugins\Analytics::get_instance();
 
 ?>
 
-<h3><i class="lsf lsf-key"></i> <?php $this->e( 'Analytics Token' ); ?></h3>
+<h3><i class="lsf lsf-key"></i> <?php _e( 'Analytics Token', 'wp-gianism' ); ?></h3>
 
 <?php if ( $analytics->ga_token ) : ?>
 	<p class="success">
-		<i class="lsf lsf-ok"></i> <?php $this->e( 'O.K. You have token.' ); ?>
+		<i class="lsf lsf-ok"></i> <?php _e( 'O.K. You have token.', 'wp-gianism' ); ?>
 	</p>
 	<code><?php print_r( $analytics->ga_token ); ?></code>
 	<?php
-	$label = $this->_( 'Restore' );
+	$label = __( 'Restore', 'wp-gianism' );
 	?>
 <?php else : ?>
 	<p class="description">
-		<i class="lsf lsf-ban"></i> <?php $this->e( 'You don\'t have token. Token is required to contact with Google Analytics API.' ); ?>
+		<i class="lsf lsf-ban"></i> <?php _e( 'You don\'t have token. Token is required to contact with Google Analytics API.', 'wp-gianism' ); ?>
 	</p>
 	<?php
-	$label = $this->_( 'Get' );
+	$label = __( 'Get', 'wp-gianism' );
 	?>
 <?php endif; ?>
 <p class="submit">
@@ -43,7 +43,7 @@ $analytics = \Gianism\Plugins\Analytics::get_instance();
 	</a>
 	<?php if ( $analytics->ga_token ) : ?>
 		<a class="button" href="<?php echo $analytics->token_url( $this->setting_url( 'analytics' ), true ); ?>">
-			<?php $this->e( 'Delete' ); ?>
+			<?php _e( 'Delete', 'wp-gianism' ); ?>
 		</a>
 	<?php endif; ?>
 </p>
@@ -51,7 +51,7 @@ $analytics = \Gianism\Plugins\Analytics::get_instance();
 
 
 <?php if ( $analytics->ga_token ) : ?>
-	<h3><i class="lsf lsf-dashboard"></i> <?php $this->e( 'Account, Profile, View' ); ?></h3>
+	<h3><i class="lsf lsf-dashboard"></i> <?php _e( 'Account, Profile, View', 'wp-gianism' ); ?></h3>
 	<form id="ga-connection"
 			action="<?php echo $analytics->token_save_url(); ?>" method="post"
 			data-endpoint="<?php echo admin_url( 'admin-ajax.php?action=wpg_ga_account' ); ?>">
@@ -60,13 +60,13 @@ $analytics = \Gianism\Plugins\Analytics::get_instance();
 		<table class="form-table">
 			<tbody>
 			<tr>
-				<th><label for="ga-account"><?php $this->e( 'Account' ); ?></label></th>
+				<th><label for="ga-account"><?php _e( 'Account', 'wp-gianism' ); ?></label></th>
 				<td>
 					<select class="ga-profile-select" name="ga-account" id="ga-account"
 							data-ga-account-id="<?php echo $analytics->ga_profile['account']; ?>"
 							data-child="ga-profile" data-clear-target="1">
 						<option
-							value="0"<?php selected( ! $analytics->ga_profile['account'] ); ?>><?php $this->e( 'Please select' ); ?></option>
+							value="0"<?php selected( ! $analytics->ga_profile['account'] ); ?>><?php _e( 'Please select', 'wp-gianism' ); ?></option>
 						<?php foreach ( $analytics->ga_accounts as $account ) : ?>
 							<option
 								value="<?php echo esc_attr( $account->id ); ?>"<?php selected( $account->id, $analytics->ga_profile['account'] ); ?>><?php echo esc_html( $account->name ); ?></option>
@@ -76,30 +76,30 @@ $analytics = \Gianism\Plugins\Analytics::get_instance();
 					<i class="dashicons dashicons-update"></i>
 					<?php if ( ! $analytics->ga_accounts ) : ?>
 						<p class="description">
-							<?php $this->e( 'Mmh, can\'t get Analytics accounts. Your token might be wrong.' ); ?>
+							<?php _e( 'Mmh, can\'t get Analytics accounts. Your token might be wrong.', 'wp-gianism' ); ?>
 						</p>
 					<?php endif; ?>
 				</td>
 			</tr>
 			<tr>
-				<th><label for="ga-profile"><?php $this->e( 'Profile' ); ?></label></th>
+				<th><label for="ga-profile"><?php _e( 'Profile', 'wp-gianism' ); ?></label></th>
 				<td>
 					<select class="ga-profile-select" name="ga-profile" id="ga-profile"
 							data-ga-profile-id="<?php echo $analytics->ga_profile['profile']; ?>" data-child="ga-view"
 							data-clear-target="2">
 						<option
-							value="0"<?php selected( ! $analytics->ga_profile['profile'] ); ?>><?php $this->e( 'Please select' ); ?></option>
+							value="0"<?php selected( ! $analytics->ga_profile['profile'] ); ?>><?php _e( 'Please select', 'wp-gianism' ); ?></option>
 					</select>
 					<i class="dashicons dashicons-yes"></i>
 					<i class="dashicons dashicons-update"></i>
 				</td>
 			</tr>
 			<tr>
-				<th><label for="ga-view"><?php $this->e( 'View' ); ?></label></th>
+				<th><label for="ga-view"><?php _e( 'View', 'wp-gianism' ); ?></label></th>
 				<td>
 					<select name="ga-view" id="ga-view" data-ga-view-id="<?php echo $analytics->ga_profile['view']; ?>">
 						<option
-							value="0"<?php selected( ! $analytics->ga_profile['view'] ); ?>><?php $this->e( 'Please select' ); ?></option>
+							value="0"<?php selected( ! $analytics->ga_profile['view'] ); ?>><?php _e( 'Please select', 'wp-gianism' ); ?></option>
 					</select>
 					<i class="dashicons dashicons-yes"></i>
 					<i class="dashicons dashicons-update"></i>
@@ -112,20 +112,20 @@ $analytics = \Gianism\Plugins\Analytics::get_instance();
 <?php endif; ?>
 
 <h3>
-	<i class="lsf lsf-server"></i> <?php $this->e( 'Create Database' ); ?>
+	<i class="lsf lsf-server"></i> <?php _e( 'Create Database', 'wp-gianism' ); ?>
 </h3>
 <p>
-	<?php $this->e( 'Gianism can create a typical table for Google Analytics Ranking. If you need customized one, forget about it and create your own.' ); ?>
+	<?php _e( 'Gianism can create a typical table for Google Analytics Ranking. If you need customized one, forget about it and create your own.', 'wp-gianism' ); ?>
 </p>
 
 <table class="mysql-table">
-	<caption><?php $this->e( 'Ranking table structure' ); ?></caption>
+	<caption><?php _e( 'Ranking table structure', 'wp-gianism' ); ?></caption>
 	<thead>
 	<tr>
-		<th><?php $this->e( 'Column' ); ?></th>
-		<th><?php $this->e( 'Type' ); ?></th>
-		<th><?php $this->e( 'Length' ); ?></th>
-		<th><?php $this->e( 'Misc' ); ?></th>
+		<th><?php _e( 'Column', 'wp-gianism' ); ?></th>
+		<th><?php _e( 'Type', 'wp-gianism' ); ?></th>
+		<th><?php _e( 'Length', 'wp-gianism' ); ?></th>
+		<th><?php _e( 'Misc', 'wp-gianism' ); ?></th>
 	</tr>
 	</thead>
 	<tbody>
@@ -170,7 +170,7 @@ $analytics = \Gianism\Plugins\Analytics::get_instance();
 
 <?php if ( $analytics->table_exists() ) : ?>
 	<p class="success">
-		<i class="dashicons dashicons-yes"></i> <?php $this->e( 'Table exits.' ); ?>
+		<i class="dashicons dashicons-yes"></i> <?php _e( 'Table exits.', 'wp-gianism' ); ?>
 	</p>
 <?php else : ?>
 	<form id="ga-table-create"
@@ -178,20 +178,20 @@ $analytics = \Gianism\Plugins\Analytics::get_instance();
 			method="post">
 		<?php wp_nonce_field( 'wp_gianism_google_create-table' ); ?>
 
-		<?php submit_button( $this->_( 'Create Table' ) ); ?>
+		<?php submit_button( __( 'Create Table', 'wp-gianism' ) ); ?>
 	</form>
 <?php endif; ?>
 
 <h3>
-	<i class="lsf lsf-time"></i> <?php $this->e( 'Installed cron files' ); ?>
+	<i class="lsf lsf-time"></i> <?php _e( 'Installed cron files', 'wp-gianism' ); ?>
 </h3>
 
 <p class="description">
-	<?php $this->e( 'To install cron, please visit our information site <a href="https://gianism.info/">gianism.info</a>.' ); ?>
+	<?php _e( 'To install cron, please visit our information site <a href="https://gianism.info/">gianism.info</a>.', 'wp-gianism' ); ?>
 </p>
 
 <?php if ( empty( $analytics->crons ) ) : ?>
-	<p><?php $this->e( 'Nothing is installed.' ); ?></p>
+	<p><?php _e( 'Nothing is installed.', 'wp-gianism' ); ?></p>
 <?php else : ?>
 	<form class="gianism-admin-form" id="cron-checker" method="post"
 			action="<?php echo admin_url( 'admin-ajax.php' ); ?>">
@@ -200,10 +200,10 @@ $analytics = \Gianism\Plugins\Analytics::get_instance();
 		<table class="mysql-table">
 			<thead>
 			<tr>
-				<th><?php $this->e( 'Class Name' ); ?></th>
-				<th><?php $this->e( 'Category' ); ?></th>
-				<th><?php $this->e( 'Interval' ); ?></th>
-				<th><?php $this->e( 'Available' ); ?></th>
+				<th><?php _e( 'Class Name', 'wp-gianism' ); ?></th>
+				<th><?php _e( 'Category', 'wp-gianism' ); ?></th>
+				<th><?php _e( 'Interval', 'wp-gianism' ); ?></th>
+				<th><?php _e( 'Available', 'wp-gianism' ); ?></th>
 			</tr>
 			</thead>
 			<tbody>
@@ -234,26 +234,26 @@ endforeach;
 			?>
 			</tbody>
 		</table>
-		<?php submit_button( $this->_( 'Check Data' ) ); ?>
+		<?php submit_button( __( 'Check Data', 'wp-gianism' ) ); ?>
 		<pre></pre>
 	</form>
 <?php endif; ?>
 
 <p class="description">
-	<?php printf( $this->_( 'Do you want to know how to install files? Here is <a href="%s">blog post</a> about it.' ), 'http://takahashifumiki.com/web/programing/3184/' ); ?>
+	<?php printf( __( 'Do you want to know how to install files? Here is <a href="%s">blog post</a> about it.', 'wp-gianism' ), 'http://takahashifumiki.com/web/programing/3184/' ); ?>
 </p>
 
 <h3>
-	<i class="lsf lsf-upload"></i> <?php $this->e( 'Installed Ajax files' ); ?>
+	<i class="lsf lsf-upload"></i> <?php _e( 'Installed Ajax files', 'wp-gianism' ); ?>
 </h3>
 
 <p class="description">
-	<?php $this->e( 'To install Ajax actions, please visit our information site <a href="https://gianism.info/">gianism.info</a>.' ); ?>
+	<?php _e( 'To install Ajax actions, please visit our information site <a href="https://gianism.info/">gianism.info</a>.', 'wp-gianism' ); ?>
 </p>
 
 
 <?php if ( empty( $analytics->ajaxes ) ) : ?>
-	<p><?php $this->e( 'Nothing is installed.' ); ?></p>
+	<p><?php _e( 'Nothing is installed.', 'wp-gianism' ); ?></p>
 <?php else : ?>
 	<form class="gianism-admin-form" id="ajax-checker" method="get"
 			action="<?php echo admin_url( 'admin-ajax.php' ); ?>">
@@ -261,8 +261,8 @@ endforeach;
 		<table class="mysql-table">
 			<thead>
 			<tr>
-				<th><?php $this->e( 'Class Name' ); ?></th>
-				<th><?php $this->e( 'Endpoint' ); ?></th>
+				<th><?php _e( 'Class Name', 'wp-gianism' ); ?></th>
+				<th><?php _e( 'Endpoint', 'wp-gianism' ); ?></th>
 			</tr>
 			</thead>
 			<tbody>
@@ -282,19 +282,19 @@ endforeach;
 		</table>
 		<table class="form-table">
 			<tr>
-				<th><label for="from"><?php $this->e( 'From' ); ?></label></th>
+				<th><label for="from"><?php _e( 'From', 'wp-gianism' ); ?></label></th>
 				<td><input type="text" class="datepicker" id="from" name="from"
 							value="<?php echo date_i18n( 'Y-m-d', strtotime( '1 month ago', time() ) ); ?>"
 							placeholder="YYYY-MM-DD"/></td>
 			</tr>
 			<tr>
-				<th><label for="to"><?php $this->e( 'To' ); ?></label></th>
+				<th><label for="to"><?php _e( 'To', 'wp-gianism' ); ?></label></th>
 				<td><input type="text" class="datepicker" id="to" name="to"
 							value="<?php echo date_i18n( 'Y-m-d' ); ?>" placeholder="YYYY-MM-DD"/></td>
 			</tr>
 		</table>
 		<p class="descritpion"></p>
-		<?php submit_button( $this->_( 'Check Data' ) ); ?>
+		<?php submit_button( __( 'Check Data', 'wp-gianism' ) ); ?>
 		<pre></pre>
 	</form>
 <?php endif; ?>

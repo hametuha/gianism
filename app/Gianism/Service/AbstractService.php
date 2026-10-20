@@ -661,7 +661,7 @@ EOS;
 		$args = [
 			'gianism-ga-category' => "gianism/{$this->service_name}",
 			'gianism-ga-action'   => 'login',
-			'gianism-ga-label'    => sprintf( $this->_( 'Login with %s' ), $this->verbose_service_name ),
+			'gianism-ga-label'    => sprintf( __( 'Login with %s', 'wp-gianism' ), $this->verbose_service_name ),
 		];
 		if ( $this->need_confirmation( $context ) ) {
 			$args['gianism-confirmation'] = $this->confirmation_message( $context );
