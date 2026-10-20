@@ -2,7 +2,7 @@
 
 Contributors: hametuha, Takahashi_Fumiki  
 Tags: facebook,twitter,google,social,sns  
-Tested up to: 6.9  
+Tested up to: 7.1  
 Stable Tag: nightly  
 License:  GPL2 or Later  
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -77,6 +77,17 @@ Please report security bugs found in the source code of the Gianism plugin throu
 ##  Changelog 
 
 Here is a list of change logs.
+
+### 6.0.2
+
+* **Text domain is changed from `wp-gianism` to `gianism`** to match the WordPress.org slug. Translations are now served from [translate.wordpress.org](https://translate.wordpress.org/projects/wp-plugins/gianism/). The bundled Japanese translation is used as a fallback for strings missing in language packs. If your code customizes Gianism's strings with the `gettext` filter, please update the text domain.
+* LINE login now verifies the `nonce` of the ID token to prevent replay attacks.
+* LINE login logs the error returned by LINE when it fails to get an access token, for easier troubleshooting.
+* Show a clear message when the email address from SNS is already registered on sign up (X, Google, LINE, and Facebook). Previously, X showed a misleading "try again later" message.
+* Fix PHP warnings on X API errors and media upload failures.
+* Update links to LINE Developers.
+* Fix untranslated strings and update the Japanese translation.
+* Fix security vulnerabilities in bundled libraries (guzzle, psr7, phpseclib).
 
 ### 6.0.1
 
