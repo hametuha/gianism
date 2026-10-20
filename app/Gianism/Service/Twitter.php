@@ -188,6 +188,9 @@ class Twitter extends NoMailService {
 						if ( $profile && isset( $profile->email ) && $profile->email ) {
 							// Yay! Email retrieved.
 							$email = $profile->email;
+							if ( email_exists( $email ) ) {
+								throw new \Exception( $this->duplicate_email_string() );
+							}
 						} else {
 							$email = $this->create_pseudo_email(
 								[
@@ -537,7 +540,7 @@ class Twitter extends NoMailService {
 				'media' => $object,
 			]
 		);
-		if ( ! $media ) {
+		if ( ! $media || empty( $media->media_id_string ) ) {
 			return new \WP_Error( 500, __( 'Failed to upload media to twitter.', 'wp-gianism' ) );
 		}
 		/** @var \stdClass $media */
@@ -672,11 +675,12 @@ class Twitter extends NoMailService {
 		$errors = new \WP_Error();
 		if ( ! empty( $body->errors ) ) {
 			foreach ( $body->errors as $error ) {
+				// v1.1 errors have message/code, v2 errors have detail/title/type.
 				$errors->add(
 					'twitter_api_error',
-					$error->message,
+					$error->message ?? $error->detail ?? $error->title ?? __( 'Unknown error.', 'wp-gianism' ),
 					[
-						'code' => $error->code,
+						'code' => $error->code ?? $error->type ?? '',
 					]
 				);
 			}

@@ -860,6 +860,16 @@ EOS;
 	}
 
 	/**
+	 * Message for email duplication on registration.
+	 *
+	 * @return string
+	 */
+	protected function duplicate_email_string() {
+		// translators: %s is service name.
+		return sprintf( __( 'This email address is already registered. Please log in with that account and connect %s from your profile page.', 'wp-gianism' ), $this->verbose_service_name );
+	}
+
+	/**
 	 * Add welcome message
 	 *
 	 * @param string $who

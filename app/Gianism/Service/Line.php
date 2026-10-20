@@ -227,7 +227,7 @@ class Line extends NoMailService {
 						$this->test_user_can_register();
 						$email = $this->create_pseudo_email( $id_token );
 						if ( email_exists( $email ) ) {
-							throw new \Exception( $this->duplicate_account_string() );
+							throw new \Exception( $this->duplicate_email_string() );
 						}
 						$user_name = 'line-' . $line_id;
 						/**

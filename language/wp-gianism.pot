@@ -475,6 +475,18 @@ msgstr ""
 msgid "This %s account is already connected with others."
 msgstr ""
 
+#. translators: %s is service name.
+#: app/Gianism/Service/AbstractService.php:869
+#, php-format
+msgid ""
+"This email address is already registered. Please log in with that account "
+"and connect %s from your profile page."
+msgstr ""
+
+#: app/Gianism/Service/Twitter.php:681
+msgid "Unknown error."
+msgstr ""
+
 #: app/Gianism/Service/AbstractService.php:876
 #, php-format
 msgid "Welcome, %s!"

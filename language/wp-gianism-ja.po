@@ -497,6 +497,20 @@ msgstr "%s APIがエラーを返しました。"
 msgid "This %s account is already connected with others."
 msgstr "この%sアカウントはすでに別のアカウントに接続されています。"
 
+#. translators: %s is service name.
+#: app/Gianism/Service/AbstractService.php:869
+#, php-format
+msgid ""
+"This email address is already registered. Please log in with that account "
+"and connect %s from your profile page."
+msgstr ""
+"このメールアドレスはすでに登録されています。そのアカウントでログインしてから、"
+"プロフィール画面で%sと連携してください。"
+
+#: app/Gianism/Service/Twitter.php:681
+msgid "Unknown error."
+msgstr "不明なエラーです。"
+
 #: app/Gianism/Service/AbstractService.php:876
 #, php-format
 msgid "Welcome, %s!"
