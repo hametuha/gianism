@@ -33,7 +33,7 @@
         "phpstan/extension-installer": "^1.4",
         "szepeviktor/phpstan-wordpress": "^2.0",
         "php-stubs/wp-cli-stubs": "^2.10",
-        "php-stubs/woocommerce-stubs": "^10.0",
+        "php-stubs/woocommerce-stubs": "^11.2",
         "wp-cli/php-cli-tools": "^0.13.0"
     },
     "autoload": {
