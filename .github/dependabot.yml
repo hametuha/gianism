@@ -13,10 +13,10 @@ updates:
     allow:
       - dependency-type: "direct"   # 推移的依存の単体PRを止める（脆弱性は下の security グループで拾う）
     groups:
-      # 通常のバージョン更新は major も含めて1本にまとめる（個別PRの乱立を防ぐ）
+      # 通常のバージョン更新は minor/patch を1本にまとめる（major は破壊的変更を切り分けるため個別PRで届く）
       npm-dependencies:
         patterns: [ "*" ]
-        update-types: [ "major", "minor", "patch" ]
+        update-types: [ "minor", "patch" ]
       # 脆弱性修正（推移的依存含む）もまとめて1本に
       npm-security:
         applies-to: security-updates
@@ -36,7 +36,7 @@ updates:
     groups:
       composer-dependencies:
         patterns: [ "*" ]
-        update-types: [ "major", "minor", "patch" ]
+        update-types: [ "minor", "patch" ]
       composer-security:
         applies-to: security-updates
         patterns: [ "*" ]
